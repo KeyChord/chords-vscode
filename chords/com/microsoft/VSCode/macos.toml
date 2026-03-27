@@ -1,0 +1,1180 @@
+[config]
+name = "VSCode"
+
+[config.js]
+module = '''
+import buildHandler from "dist/vscode.js"
+export default buildHandler(import.meta);
+'''
+
+[chords]
+'?f' = { name = "Find / File" }
+
+# Find
+'f[' = [
+  { name = "Find Previous", args = [
+    'workbench.action.browser.findPrevious',
+  ], shortcut = "shift+cmd+g" },
+  { name = "workbench.action.terminal.findPrevious", args = [
+    'workbench.action.terminal.findPrevious',
+  ], shortcut = "shift+f3" },
+]
+'f]' = [
+  { name = "Find Next", args = [
+    'workbench.action.browser.findNext',
+  ], shortcut = "cmd+g" },
+  { name = "workbench.action.terminal.findNext", args = [
+    'workbench.action.terminal.findNext',
+  ], shortcut = "f3" },
+]
+fr = { name = "Find and Replace", args = [
+  'editor.action.startFindReplaceAction',
+], shortcut = "alt+cmd+f" }
+fg = { name = "Find Globally", args = ['workbench.action.findInFiles'], shortcut = "shift+cmd+f" }
+frg = { name = "Find Replace Globally", args = [
+  'workbench.action.replaceInFiles',
+], shortcut = "shift+cmd+h" }
+
+# File
+fp = { name = "File: Path", args = ['copyFilePath'], shortcut = "alt+cmd+c" }
+# fp = { name = "File: Path", args = ['workbench.action.files.copyPathOfActiveFile'], shortcut = "cmd+k p" }
+frp = { name = "File: Relative Path", args = [
+  'copyRelativeFilePath',
+], shortcut = "shift+alt+cmd+c" }
+fn = { name = "File: New", shortcut = "ctrl+opt+cmd+n" }
+fnn = { name = "File: New Name", args = ['renameFile'] }
+fh = { name = "File: Here", args = ['explorer.newFile'] }
+fd = { name = "File: Directory", args = ['explorer.newFolder'] }
+fc = { name = "File: Close Directory", args = [
+  'workbench.action.closeFolder',
+], shortcut = "cmd+k f" }
+fnu = { name = "File: New Untitled File", args = [
+  'workbench.action.files.newUntitledFile',
+], shortcut = "cmd+n" }
+ft = { name = "File: Trash", args = ['deleteFile'], shortcut = "alt+cmd+backspace" }
+fm = { name = "File: Format", args = ['editor.action.formatDocument'], shortcut = "shift+alt+f" }
+fs = { name = "File: Show", args = ['revealInExplorer'] }
+fra = { name = "search.action.replaceAllInFile", args = [
+  'search.action.replaceAllInFile',
+], shortcut = "shift+cmd+enter" }
+fo = { name = "File: Open", args = ['workbench.action.files.openFile'], shortcut = "cmd+o" }
+for = { name = "File: Open Recent", args = ['workbench.action.openRecent'], shortcut = "ctrl+r" }
+
+## Fold
+'?ff' = { name = "Folding: Fold" }
+ff = { name = "Folding: Fold", args = ['editor.fold'], shortcut = "alt+cmd+[" }
+ffa = { name = "Folding: Fold All", args = ['editor.foldAll'], shortcut = "cmd+k cmd+0" }
+ffc = { name = "Folding: Fold Comments", args = [
+  'editor.foldAllBlockComments',
+], shortcut = "cmd+k cmd+/" }
+ffr = { name = "Folding: Fold Recursively", args = [
+  'editor.foldRecursively',
+], shortcut = "cmd+k cmd+[" }
+ffe = { name = "Folding: Fold All Except", args = [
+  'editor.foldAllExcept',
+], shortcut = "cmd+k cmd+-" }
+ffm = { name = "Folding: Fold All Marker Regions", args = [
+  'editor.foldAllMarkerRegions',
+], shortcut = "cmd+k cmd+8" }
+
+## Unfold
+'?fu' = { name = "Folding: Unfold" }
+fu = { name = "Folding: Unfold", args = ['editor.unfold'], shortcut = "alt+cmd+]" }
+fua = { name = "Folding: Unfold All", args = ['editor.unfoldAll'], shortcut = "cmd+k cmd+j" }
+fuc = { name = "Folding: Unfold Comments", args = ['editor.unfoldAllBlockComments'] }
+fur = { name = "Folding: Unfold Recursively", args = [
+  'editor.unfoldRecursively',
+], shortcut = "cmd+k cmd+]" }
+fue = { name = "Folding: Unfold All Except", args = [
+  'editor.unfoldAllExcept',
+], shortcut = "cmd+k cmd+=" }
+fum = { name = "Folding: Unfold All Marker Regions", args = [
+  'editor.unfoldAllMarkerRegions',
+], shortcut = "cmd+k cmd+9" }
+
+ffs = { name = "Folding: From Selection", args = [
+  'editor.createFoldingRangeFromSelection',
+], shortcut = "cmd+k cmd+," }
+frm = { name = "Folding: Remove Manual", args = [
+  'editor.removeManualFoldingRanges',
+], shortcut = "cmd+k cmd+." }
+ftr = { name = "Folding: Toggle Recursively", args = [
+  'editor.toggleFoldRecursively',
+], shortcut = "cmd+k shift+cmd+l" }
+
+'?f{1..7}' = { name = "Folding: Level" }
+f1 = { name = "editor.foldLevel1", args = ['editor.foldLevel1'], shortcut = "cmd+k cmd+1" }
+f2 = { name = "editor.foldLevel2", args = ['editor.foldLevel2'], shortcut = "cmd+k cmd+2" }
+f3 = { name = "editor.foldLevel3", args = ['editor.foldLevel3'], shortcut = "cmd+k cmd+3" }
+f4 = { name = "editor.foldLevel4", args = ['editor.foldLevel4'], shortcut = "cmd+k cmd+4" }
+f5 = { name = "editor.foldLevel5", args = ['editor.foldLevel5'], shortcut = "cmd+k cmd+5" }
+f6 = { name = "editor.foldLevel6", args = ['editor.foldLevel6'], shortcut = "cmd+k cmd+6" }
+f7 = { name = "editor.foldLevel7", args = ['editor.foldLevel7'], shortcut = "cmd+k cmd+7" }
+
+# History
+hb = { name = "History: Back", args = ['workbench.action.navigateBack'], shortcut = "BrowserBack" }
+hf = { name = "History: Forward", args = [
+  'workbench.action.navigateForward',
+], shortcut = "BrowserForward" }
+
+# Panels
+'?p' = { name = "Panel" }
+pa = { name = "Panel: AI", args = ['workbench.panel.chat'], shortcut = "ctrl+cmd+i" }
+pd = { name = "Panel: Debug", args = ['workbench.view.debug'], shortcut = "shift+cmd+d" }
+pe = { name = "Panel: Explorer", args = ['workbench.view.explorer'], shortcut = "shift+cmd+e" }
+pg = { name = "Panel: Git", args = ['workbench.view.scm'], shortcut = "ctrl+shift+g" }
+pmd = { name = "Panel: Move Down", args = ['views.moveViewDown'], shortcut = "cmd+k down" }
+pml = { name = "Panel: Move Left", args = ['views.moveViewLeft'], shortcut = "cmd+k left" }
+pmr = { name = "Panel: Move Right", args = ['views.moveViewRight'], shortcut = "cmd+k right" }
+pmu = { name = "Panel: Move Up", args = ['views.moveViewUp'], shortcut = "cmd+k up" }
+pp = { name = "Panel: Problems", args = [
+  'workbench.actions.view.problems',
+], shortcut = "shift+cmd+m" }
+ps = { name = "Panel: Search", args = ['workbench.view.search'], shortcut = "shift+cmd+f" }
+psb = { name = "Panel: Side Bar", args = [
+  'workbench.action.toggleSidebarVisibility',
+], shortcut = "cmd+b" }
+pm = { name = "Panel: Marketplace", args = ['workbench.view.extensions'], shortcut = "shift+cmd+x" }
+po = { name = "Panel: Open", args = [
+  'workbench.action.quickOpenView',
+], shortcut = "cmd+shift+p v i e w space" }
+pf = { name = "Panel: Forward", args = [
+  'workbench.action.quickOpenNavigateNextInViewPicker',
+], shortcut = "ctrl+q" }
+pb = { name = "Panel: Back", args = [
+  'workbench.action.quickOpenNavigatePreviousInViewPicker',
+], shortcut = "ctrl+shift+q" }
+pi = { name = "Panel: Info", args = ['workbench.action.togglePanel'], shortcut = "cmd+j" }
+px = { name = "Panel: Next", args = ['workbench.action.focusNextPart'], shortcut = "f6" }
+pv = { name = "Panel: Forward", args = [
+  'workbench.action.focusPreviousPart',
+], shortcut = "shift+f6" }
+pgk = { name = "Page: Keybindings", args = [
+  'workbench.action.openGlobalKeybindings',
+], shortcut = "cmd+k cmd+s" }
+pgs = { name = "Page: Settings", args = ['workbench.action.openSettings'], shortcut = "cmd+," }
+
+'?e' = { name = "Editor" }
+ea = { name = "Editor: Actions", args = ['editor.action.quickFix'], shortcut = "cmd+." }
+ek = { name = "Editor: Kwik Fix", args = ['editor.action.quickFix'], shortcut = "cmd+." }
+es = { name = "Editor: Focus", args = ['workbench.action.focusActiveEditorGroup'] }
+ep = { name = "Editor: Pin", args = ['workbench.action.pinEditor'], shortcut = "cmd+k shift+enter" }
+eu = { name = "Editor: Unpin", args = [
+  'workbench.action.unpinEditor',
+], shortcut = "cmd+k shift+enter" }
+esa = { name = "Editor: Show All", args = [
+  'workbench.action.showAllEditors',
+], shortcut = "alt+cmd+tab" }
+eo = { name = "Editor: Open Recently Closed", args = [
+  'workbench.action.reopenClosedEditor',
+], shortcut = "shift+cmd+t" }
+'e[' = { name = "Editor: Previous", args = [
+  'workbench.action.previousEditorInGroup',
+], shortcut = "cmd+k alt+cmd+left" }
+'e]' = { name = "Editor: Next", args = ['workbench.action.nextEditor'], shortcut = "shift+cmd+]" }
+'e]g' = { name = "Editor: Next in Group", args = [
+  'workbench.action.nextEditorInGroup',
+], shortcut = "cmd+k alt+cmd+right" }
+ef = { name = "Editor: Forward", args = [
+  'workbench.action.quickOpenLeastRecentlyUsedEditorInGroup',
+], shortcut = "ctrl+shift+tab" }
+eb = { name = "Editor: Back", args = [
+  'workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup',
+], shortcut = "ctrl+tab" }
+'?eq' = { name = "Editor: Quit" }
+eq = { name = "Editor: Quit", args = ['workbench.action.closeActiveEditor'], shortcut = "cmd+w" }
+eqa = { name = "Editor: Quit All", args = [
+  'workbench.action.closeAllEditors',
+], shortcut = "cmd+k cmd+w" }
+eqo = { name = "Editor: Quit Others", args = [
+  'workbench.action.closeOtherEditors',
+], shortcut = "alt+cmd+t" }
+equ = { name = "Split: Quit Unmodified", args = [
+  'workbench.action.closeUnmodifiedEditors',
+], shortcut = "cmd+k u" }
+
+'?eg' = { name = "Editor Group" }
+egd = { name = "workbench.action.moveActiveEditorGroupDown", args = [
+  'workbench.action.moveActiveEditorGroupDown',
+], shortcut = "cmd+k down" }
+egl = { name = "workbench.action.moveActiveEditorGroupLeft", args = [
+  'workbench.action.moveActiveEditorGroupLeft',
+], shortcut = "cmd+k left" }
+egr = { name = "workbench.action.moveActiveEditorGroupRight", args = [
+  'workbench.action.moveActiveEditorGroupRight',
+], shortcut = "cmd+k right" }
+egu = { name = "workbench.action.moveActiveEditorGroupUp", args = [
+  'workbench.action.moveActiveEditorGroupUp',
+], shortcut = "cmd+k up" }
+
+
+'?t' = { name = "Tab / Terminal" }
+t1 = { name = "Tab 1", args = ['workbench.action.openEditorAtIndex1'], shortcut = "ctrl+1" }
+t2 = { name = "Tab 2", args = ['workbench.action.openEditorAtIndex2'], shortcut = "ctrl+2" }
+t3 = { name = "Tab 3", args = ['workbench.action.openEditorAtIndex3'], shortcut = "ctrl+3" }
+t4 = { name = "Tab 4", args = ['workbench.action.openEditorAtIndex4'], shortcut = "ctrl+4" }
+t5 = { name = "Tab 5", args = ['workbench.action.openEditorAtIndex5'], shortcut = "ctrl+5" }
+t6 = { name = "Tab 6", args = ['workbench.action.openEditorAtIndex6'], shortcut = "ctrl+6" }
+t7 = { name = "Tab 7", args = ['workbench.action.openEditorAtIndex7'], shortcut = "ctrl+7" }
+t8 = { name = "Tab 8", args = ['workbench.action.openEditorAtIndex8'], shortcut = "ctrl+8" }
+t9 = { name = "Tab 9", args = ['workbench.action.openEditorAtIndex9'], shortcut = "ctrl+9" }
+ta = { name = "Terminal: Actions", args = [
+  'workbench.action.terminal.showQuickFixes',
+], shortcut = "cmd+." }
+tc = { name = "Terminal: Clear", args = [
+  'workbench.action.terminal.clear',
+], shortcut = "cmd+k" }
+ti = { name = "Terminal: Input Chat", args = ['workbench.action.terminal.chat.start'], shortcut = "cmd+i" }
+tn = { name = "workbench.action.terminal.new", args = [
+  'workbench.action.terminal.new", shortcut = "ctrl+shift+`',
+] }
+tt = { name = "Terminal: Toggle", args = [
+  'workbench.action.terminal.toggleTerminal`", shortcut = "ctrl+',
+] }
+tl = { name = "Terminal: Link Open", args = [
+  'workbench.action.terminal.openDetectedLink',
+], shortcut = "shift+cmd+o" }
+ts = { name = "Terminal: Split", args = [
+  'workbench.action.terminal.splitActiveTab',
+], shortcut = "ctrl+shift+5" }
+ton = { name = "Terminal: Open Native", args = [
+  'workbench.action.terminal.openNativeConsole',
+], shortcut = "shift+cmd+c" }
+
+'?s' = { name = "Search / Split" }
+sg = { name = "Search Globally", args = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
+sf = { name = "Search Files", args = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
+sa = { name = "Split: Auto", args = ['workbench.action.splitEditor'], shortcut = "cmd+backslash" }
+sl = { name = "Split: Left", args = [
+  'workbench.action.splitEditorLeft',
+], shortcut = "cmd+k cmd+backslash" }
+sr = { name = "Split: Right", args = [
+  'workbench.action.splitEditorRight',
+], shortcut = "cmd+k cmd+backslash" }
+su = { name = "Split Up", args = [
+  'workbench.action.splitEditorUp',
+], shortcut = "cmd+k cmd+backslash" }
+sd = { name = "Split: Down", args = [
+  'workbench.action.splitEditorDown',
+], shortcut = "cmd+k cmd+backslash" }
+so = { name = "Split: Orthogonal", args = [
+  'workbench.action.splitEditorOrthogonal',
+], shortcut = "cmd+k cmd+backslash" }
+si = { name = "Split: Inner", args = [
+  'workbench.action.splitEditorInGroup',
+], shortcut = "cmd+k shift+cmd+backslash" }
+sn = { name = "Split: North", args = [
+  'workbench.action.focusAboveGroup',
+], shortcut = "cmd+k cmd+up" }
+ss = { name = "Split: South", args = [
+  'workbench.action.focusBelowGroup',
+], shortcut = "cmd+k cmd+down" }
+sw = { name = "Split: West", args = [
+  'workbench.action.focusLeftGroup',
+], shortcut = "cmd+k cmd+left" }
+se = { name = "Split: East", args = [
+  'workbench.action.focusRightGroup',
+], shortcut = "cmd+k cmd+right" }
+s1 = { name = "Split: 1st", args = ['workbench.action.focusFirstEditorGroup'], shortcut = "cmd+1" }
+s2 = { name = "Split: 2nd", args = ['workbench.action.focusSecondEditorGroup'], shortcut = "cmd+2" }
+s3 = { name = "Split: 3rd", args = ['workbench.action.focusThirdEditorGroup'], shortcut = "cmd+3" }
+s4 = { name = "Split: 4th", args = ['workbench.action.focusFourthEditorGroup'], shortcut = "cmd+4" }
+s5 = { name = "Split: 5th", args = ['workbench.action.focusFifthEditorGroup'], shortcut = "cmd+5" }
+s6 = { name = "Split: 6th", args = ['workbench.action.focusSixthEditorGroup'], shortcut = "cmd+6" }
+s7 = { name = "Split: 7th", args = [
+  'workbench.action.focusSeventhEditorGroup',
+], shortcut = "cmd+7" }
+s8 = { name = "Split: 8th", args = ['workbench.action.focusEighthEditorGroup'], shortcut = "cmd+8" }
+sq = { name = "Split: Quit", args = ['workbench.action.closeGroup'], shortcut = "cmd+w" }
+sqe = { name = "Split: Quit Editors", args = [
+  'workbench.action.closeEditorsInGroup',
+], shortcut = "cmd+k w" }
+sqa = { name = "Split: Quit All", args = [
+  'workbench.action.closeAllGroups',
+], shortcut = "cmd+k shift+cmd+w" }
+
+'?g' = { name = "Goto" }
+gb = { name = "Goto Bracket", args = [
+  'editor.action.jumpToBracket',
+], shortcut = "shift+cmd+backslash" }
+gpx = { name = "Goto Problem: Next", shortcut = "f8" }
+gpv = { name = "Goto Problem: Previous", shortcut = "shift+f8" }
+gcx = { name = "Goto Change: Next", shortcut = "opt+f3" }
+gcv = { name = "Goto Change: Previous", shortcut = "shift+opt+f3" }
+gd = { name = "Goto Declaration", args = ['editor.action.goToDeclaration'] }
+gy = { name = "Goto Type Definition", args = ['editor.action.goToTypeDefinition'] }
+gi = { name = "Goto Implementation", args = [
+  'editor.action.goToImplementation',
+], shortcut = "cmd+f12" }
+gip = { name = "Goto Implementation Peek", args = [
+  'editor.action.peekImplementation',
+], shortcut = "shift+cmd+f12" }
+gl = { name = "Goto Line", args = ['workbench.action.gotoLine'], shortcut = "ctrl+g" }
+gr = { name = "Goto References", args = ['editor.action.goToReferences'], shortcut = "shift+f12" }
+grv = { name = "Goto Reference: Previous", args = [
+  'goToPreviousReference',
+], shortcut = "shift+f12" }
+grx = { name = "Goto Reference: Next", args = ['goToNextReference'], shortcut = "f12" }
+gs = { name = "Goto Symbol", args = ['workbench.action.gotoSymbol'], shortcut = "shift+cmd+o" }
+
+'?w' = { name = "Window" }
+woe = { name = "Window: Open Editor", args = [
+  'workbench.action.copyEditorToNewWindow',
+], shortcut = "cmd+k o" }
+wq = { name = "Window: Quit", args = ['workbench.action.closeWindow'], shortcut = "shift+cmd+w" }
+wqo = { name = "Window: Quit Others", args = ['workbench.action.closeOtherWindows'] }
+wn = { name = "Window: New", args = ['workbench.action.newWindow'], shortcut = "shift+cmd+n" }
+wr = { name = "Window: Reload", args = ['workbench.action.reloadWindow'], shortcut = "cmd+r" }
+ws = { name = "Window: Switch", args = ['workbench.action.switchWindow'], shortcut = "ctrl+w" }
+wt = { name = "Window: Terminal", args = [
+  'workbench.action.terminal.newInNewWindow`", shortcut = "ctrl+shift+alt+',
+] }
+
+'?z' = { name = "Zoom / Zen" }
+zf = { name = "Zoom: Full Screen", args = [
+  'workbench.action.toggleFullScreen',
+], shortcut = "ctrl+cmd+f" }
+zi = { name = "Zoom In", args = ['workbench.action.zoomIn'], shortcut = "cmd+NumpadAdd" }
+zo = { name = "Zoom Out", args = ['workbench.action.zoomOut'], shortcut = "cmd+NumpadSubtract" }
+zr = { name = "Zoom Reset", args = ['workbench.action.zoomReset'], shortcut = "cmd+Numpad0" }
+zm = { name = "Zen Mode", args = ['workbench.action.toggleZenMode'], shortcut = "cmd+k z" }
+zq = { name = "Zen: Quit", args = [
+  'workbench.action.exitZenMode',
+], shortcut = "escape escape" }
+
+'?d' = { name = "Debug" }
+da = { name = "Debug: All", args = ['testing.debugAll'], shortcut = "cmd+; cmd+a" }
+dc = { name = "Debug: Cursor", args = [
+  'testing.debugAtCursor',
+], shortcut = "cmd+; cmd+c" }
+df = { name = "Debug: File", args = [
+  'testing.debugCurrentFile',
+], shortcut = "cmd+; cmd+f" }
+dft = { name = "Debug: Failed Tests", args = [
+  'testing.debugFailTests',
+], shortcut = "cmd+; cmd+e" }
+dl = { name = "Debug: Last", args = ['testing.debugLastRun'], shortcut = "cmd+; cmd+l" }
+dd = { name = "Debug: Debug", args = ['Debug'] }
+ds = { name = "Debug: Start", args = ['workbench.action.debug.start'], shortcut = "f5" }
+db = { name = "Debug: Breakpoint", args = [
+  'editor.debug.action.toggleBreakpoint',
+], shortcut = "f9" }
+do = { name = "Debug: Stop", args = ['workbench.action.debug.stop'], shortcut = "shift+f5" }
+du = { name = "Debug: Pause", args = ['workbench.action.debug.pause'], shortcut = "f6" }
+dr = { name = "Debug: Run", args = ['workbench.action.debug.run'], shortcut = "ctrl+f5" }
+dv = { name = "Debug: View", args = ['debug.openView'], shortcut = "cmd+f5" }
+dcw = { name = "Debug: Copy Watch Expression", args = [
+  'debug.copyWatchExpression',
+], shortcut = "alt+cmd+c" }
+drs = { name = "Debug: Restart", args = [
+  'workbench.action.debug.restart',
+], shortcut = "shift+cmd+f5" }
+dh = { name = "Debug: Hover", args = [
+  'editor.debug.action.showDebugHover',
+], shortcut = "cmd+k cmd+i" }
+dit = { name = "Debug: Into Target", args = [
+  'workbench.action.debug.stepIntoTarget',
+], shortcut = "cmd+f11" }
+
+'?ds' = { name = "Debug: Step" }
+dsi = { name = "Debug: Step Into", args = ['workbench.action.debug.stepInto'], shortcut = "f11" }
+dso = { name = "Debug: Step Out", args = ['workbench.action.debug.stepOut'], shortcut = "shift+f11" }
+dsv = { name = "Debug: Step Over", args = ['workbench.action.debug.stepOver'], shortcut = "f10" }
+
+'?dc' = { name = "Debug Console" }
+'dc]' = { name = "workbench.action.debug.nextConsole", args = [
+  'workbench.action.debug.nextConsole',
+], shortcut = "shift+cmd+]" }
+'dc[' = { name = "workbench.action.debug.prevConsole", args = [
+  'workbench.action.debug.prevConsole',
+], shortcut = "shift+cmd+[" }
+
+# Code
+'?c' = { name = "Code" }
+ci = { name = "Code: Imports", args = [
+  'editor.action.organizeImports',
+], shortcut = "shift+alt+o" }
+cd = { name = "Code: Definition", args = ['editor.action.revealDefinition'], shortcut = "f12" }
+'c[' = { name = "Code: Previous", args = [
+  'editor.action.inlineSuggest.showPrevious',
+], shortcut = "alt+[" }
+'c]' = { name = "Code: Next", args = ['editor.action.inlineSuggest.showNext'], shortcut = "alt+]" }
+cdp = { name = "Code: Definition Peek", args = [
+  'editor.action.peekDefinition',
+], shortcut = "alt+f12" }
+ch = { name = "Code: Hover", args = ['workbench.action.showHover'], shortcut = "cmd+k cmd+i" }
+cr = { name = "Code: Refactor", args = ['editor.action.refactor'], shortcut = "ctrl+shift+r" }
+crn = { name = "Code: Re Name", args = ['editor.action.rename'], shortcut = "f2" }
+cs = { name = "Code: Suggest", args = [
+  'workbench.action.terminal.triggerSuggest',
+], shortcut = "ctrl+space" }
+'?cc' = { name = "Code Comment" }
+cc = { name = "Code: Comment", args = ['editor.action.commentLine'], shortcut = "cmd+/" }
+cca = { name = "Code: Comment Add", args = [
+  'workbench.action.addComment',
+], shortcut = "cmd+k alt+cmd+c" }
+ccb = { name = "Code: Comment Block", args = [
+  'editor.action.blockComment',
+], shortcut = "shift+alt+a" }
+ccl = { name = "Code: Comment Line", args = [
+  'editor.action.addCommentLine',
+], shortcut = "cmd+k cmd+c" }
+ccr = { name = "Code Comment: Remove", args = [
+  'editor.action.removeCommentLine',
+], shortcut = "cmd+k cmd+u" }
+cch = { name = "Code Comment: Hide", args = ['workbench.action.hideComment'], shortcut = "shift+escape" }
+
+'?n' = { name = "Notebook" }
+
+'?nb' = { name = "Notebook" }
+'nb[' = { name = "Notebook: Previous", args = [
+  'notebook.findPrevious.fromWidget',
+], shortcut = "shift+f3" }
+'nb]' = { name = "Notebook: Next", args = [
+  'notebook.findNext.fromWidget',
+], shortcut = "f3" }
+nba = { name = "Notebook: Add", args = [
+  'notebook.addFindMatchToSelection',
+], shortcut = "cmd+d" }
+
+'?nbl' = { name = "Notebook Language" }
+nbld = { name = "Notebook Language: Detect", args = [
+  'notebook.cell.detectLanguage',
+], shortcut = "shift+alt+d" }
+nblc = { name = "Notebook Language: Change", args = [
+  'notebook.cell.changeLanguage',
+], shortcut = "cmd+k m" }
+
+'?nc' = { name = "Notebook Cell" }
+nci = { name = "Notebook Cell: Input Collapse", args = [
+  'notebook.cell.collapseCellInput',
+], shortcut = "cmd+k cmd+c" }
+'nc/' = { name = "Notebook Cell: Comment", args = [
+  'notebook.cell.comment',
+], shortcut = "cmd+/" }
+nco = { name = "Notebook Cell: Output Collapse", args = [
+  'notebook.cell.collapseCellOutput',
+], shortcut = "cmd+k t" }
+nca = { name = "Notebook Cell: AI", args = [
+  'notebook.cell.chat.start',
+], shortcut = "cmd+k i" }
+ncc = { name = "Notebook Cell: Center", args = [
+  'notebook.centerActiveCell',
+], shortcut = "ctrl+l" }
+ncei = { name = "Notebook Cell: Expand Input", args = [
+  'notebook.cell.expandCellInput',
+], shortcut = "cmd+k cmd+c" }
+nceo = { name = "Notebook Cell: Expand Output", args = [
+  'notebook.cell.expandCellOutput',
+], shortcut = "cmd+k t" }
+ncf = { name = "Notebook Cell: Format", args = ['notebook.formatCell'], shortcut = "shift+alt+f" }
+ncfa = { name = "Notebook Cell: Failure Actions", args = [
+  'notebook.cell.openFailureActions',
+], shortcut = "cmd+." }
+ncs = { name = "Notebook Cell: Split", args = [
+  'notebook.cell.split',
+], shortcut = "cmd+k shift+cmd+backslash" }
+ncja = { name = "Notebook Cell: Join Above", args = [
+  'notebook.cell.joinAbove',
+], shortcut = "ctrl+shift+alt+j" }
+ncjb = { name = "Notebook Cell: Join Below", args = [
+  'notebook.cell.joinBelow',
+], shortcut = "ctrl+alt+j" }
+ncp = { name = "Notebook Cell: Paste Above", args = [
+  'notebook.cell.pasteAbove',
+], shortcut = "shift+cmd+v" }
+nct = { name = "Notebook Cell: Toggle Output Scrolling", args = [
+  'notebook.cell.toggleOutputScrolling',
+], shortcut = "cmd+k y" }
+
+# Marker
+'?m' = { name = "Marker" }
+'m]' = { name = "editor.action.marker.next", args = [
+  'editor.action.marker.next',
+], shortcut = "alt+f8" }
+'m]f' = { name = "editor.action.marker.nextInFiles", args = [
+  'editor.action.marker.nextInFiles',
+], shortcut = "f8" }
+'m[' = { name = "editor.action.marker.prev", args = [
+  'editor.action.marker.prev',
+], shortcut = "shift+alt+f8" }
+'m[f' = { name = "editor.action.marker.prevInFiles", args = [
+  'editor.action.marker.prevInFiles',
+], shortcut = "shift+f8" }
+
+'?i' = { name = "Input (Chat)" }
+ia = { name = "Input: Accept All", args = ['chatEditor.action.acceptAllEdits'], shortcut = "alt+cmd+y" }
+iy = { name = "Input: Yes", args = ['chatEditor.action.accept'], shortcut = "shift+cmd+y" }
+ir = { name = "Input: Reject", args = ['chatEditor.action.reject'], shortcut = "shift+cmd+n" }
+in = { name = "Input: New", args = ['workbench.action.chat.newChat'], shortcut = "ctrl+l" }
+iad = { name = "Input: Accessible Diff", args = [
+  'chatEditor.action.showAccessibleDiffView',
+], shortcut = "f7" }
+id = { name = "Input: Diff", args = [
+  'chatEditor.action.toggleDiff',
+], shortcut = "shift+alt+f7" }
+ii = { name = "Input: Inline", args = ['inlineChat.askInChat'], shortcut = "cmd+i" }
+is = { name = "Input: Start", args = ['inlineChat.start'], shortcut = "cmd+i" }
+io = { name = "Input: Open", args = ['workbench.action.chat.open'], shortcut = "ctrl+cmd+i" }
+ic = { name = "Input: Context", args = [
+  'workbench.action.chat.attachContext',
+], shortcut = "cmd+/" }
+iq = { name = "Input: Quick", args = [
+  'workbench.action.quickchat.toggle',
+], shortcut = "shift+alt+cmd+l" }
+'i]' = { name = "Input: Next", args = [
+  'chatEditor.action.navigateNext',
+], shortcut = "alt+f5" }
+'i[' = { name = "Input: Previous", args = [
+  'chatEditor.action.navigatePrevious',
+], shortcut = "shift+alt+f5" }
+
+'?h' = { name = "Hunk" }
+ha = { name = "Hunk: Accept", args = [
+  'chatEditor.action.acceptHunk',
+], shortcut = "cmd+y" }
+hu = { name = "Hunk: Undo", args = [
+  'chatEditor.action.undoHunk',
+], shortcut = "cmd+n" }
+
+'?ac' = { name = "Accessibility" }
+ach = { name = "Accessibility: Help", args = [
+  'editor.action.accessibilityHelp',
+], shortcut = "alt+f1" }
+ahca = { name = "Accessibility: Configure Assigned Keybindings", args = [
+  'editor.action.accessibilityHelpConfigureAssignedKeybindings',
+], shortcut = "alt+a" }
+ahck = { name = "Accessibility: Configure Keybindings", args = [
+  'editor.action.accessibilityHelpConfigureKeybindings',
+], shortcut = "alt+k" }
+aco = { name = "Accessibility: Open Help Link", args = [
+  'editor.action.accessibilityHelpOpenHelpLink',
+], shortcut = "alt+h" }
+'?av' = { name = "Accessibility View" }
+av = { name = "Accessibility View", args = [
+  'editor.action.accessibleView',
+], shortcut = "alt+f2" }
+avg = { name = "Accessibility View: Goto Symbol", args = [
+  'editor.action.accessibleViewGoToSymbol',
+], shortcut = "shift+cmd+." }
+ava = { name = "Accessibility View: Accept Inline Completion", args = [
+  'editor.action.accessibleViewAcceptInlineCompletion',
+], shortcut = "ctrl+/" }
+avd = { name = "Accessibility View: Disable Hint", args = [
+  'editor.action.accessibleViewDisableHint',
+], shortcut = "alt+f6" }
+'av]' = { name = "Accessibility View: Next", args = [
+  'editor.action.accessibleViewNext',
+], shortcut = "alt+]" }
+'av[' = { name = "Accessibility View: Previous", args = [
+  'editor.action.accessibleViewPrevious',
+], shortcut = "alt+[" }
+
+'?b' = { name = "Breadcrumbs" }
+bf = { name = "Breadcrumbs: Focus", args = ['breadcrumbs.focus'], shortcut = "shift+cmd+;" }
+bs = { name = "Breadcrumbs: Select", args = [
+  'breadcrumbs.focusAndSelect',
+], shortcut = "shift+cmd+." }
+bo = { name = "Breadcrumbs: On", args = [
+  'breadcrumbs.toggleToOn',
+], shortcut = "shift+cmd+." }
+
+'?q' = { name = "QA (Testing)" }
+qh = { name = "QA: History", args = [
+  'testing.toggleTestingPeekHistory',
+], shortcut = "alt+h" }
+qs = { name = "QA: Show Recent Output", args = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
+'?qc' = { name = "QA Coverage" }
+qci = { name = "QA Coverage: Inline", args = [
+  'testing.toggleInlineCoverage',
+], shortcut = "cmd+; shift+cmd+i" }
+'qc]' = { name = "QA Coverage: Next Missed Line", args = [
+  'testing.coverage.goToNextMissedLine',
+], shortcut = "alt+f9" }
+'qc[' = { name = "QA Coverage: Previous Missed Line", args = [
+  'testing.coverage.goToPreviousMissedLine',
+], shortcut = "shift+alt+f9" }
+qca = { name = "QA Coverage: Al", args = [
+  'testing.coverageAll',
+], shortcut = "cmd+; shift+cmd+a" }
+qcc = { name = "QA Coverage: Cursor", args = [
+  'testing.coverageAtCursor',
+], shortcut = "cmd+; shift+cmd+c" }
+qcf = { name = "QA Coverage: File", args = [
+  'testing.coverageCurrentFile',
+], shortcut = "cmd+; shift+cmd+f" }
+qcl = { name = "QA Coverage: Last Run", args = [
+  'testing.coverageLastRun',
+], shortcut = "cmd+; shift+cmd+l" }
+'?qr' = { name = "QA Run / Refresh" }
+qr = { name = "QA Refresh", args = ['testing.refreshTests'], shortcut = "cmd+; cmd+r" }
+qra = { name = "QA Run: All", args = ['testing.runAll'], shortcut = "cmd+; a" }
+qri = { name = "QA Run: Input Cursor", args = ['testing.runAtCursor'], shortcut = "cmd+; c" }
+qrc = { name = "QA Run: Cancel", args = ['testing.cancelRun'], shortcut = "cmd+; cmd+x" }
+qrf = { name = "QA Run File", args = ['testing.runCurrentFile'], shortcut = "cmd+; f" }
+qrr = { name = "QA: Re-Run", args = ['testing.reRunFailTests'], shortcut = "cmd+; e" }
+qrl = { name = "QA Run: Last Run", args = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
+'?qo' = { name = "QA Output" }
+qop = { name = "QA: Output Peek", args = [
+  'testing.openOutputPeek',
+], shortcut = "cmd+; cmd+m" }
+qor = { name = "QA: Output Recent", args = [
+  'testing.showMostRecentOutput',
+], shortcut = "cmd+; cmd+o" }
+qoi = { name = "QA: Output Inline", args = [
+  'testing.toggleInlineTestOutput',
+], shortcut = "cmd+; cmd+i" }
+
+# acs = { name = "addCursorsAtSearchResults", args = ['addCursorsAtSearchResults'] }
+# acp = { name = "editor.action.announceCursorPosition", args = [
+#   'editor.action.announceCursorPosition',
+# ], shortcut = "shift+alt+cmd+g" }
+# acr = { name = "addCursorsAtSearchResults", args = ['addCursorsAtSearchResults'] }
+
+# as = { name = "editor.action.addSelectionToNextFindMatch", args = [
+#   'editor.action.addSelectionToNextFindMatch',
+# ], shortcut = "cmd+d" }
+
+# asc = { name = "acceptSelectedCodeAction", args = ['acceptSelectedCodeAction'] }
+
+
+# # ca = { name = "Change All", args = ['editor.action.changeAll'], shortcut = "cmd+f2" }
+
+
+# cdt = { name = "editor.changeDropType", args = ['editor.changeDropType'], shortcut = "cmd+." }
+
+# cenc = { name = "workbench.action.compareEditor.nextChange", args = [
+#   'workbench.action.compareEditor.nextChange',
+# ], shortcut = "alt+f5" }
+
+# ceos = { name = "workbench.action.compareEditor.openSide", args = [
+#   'workbench.action.compareEditor.openSide',
+# ], shortcut = "cmd+k shift+o" }
+
+# cepc = { name = "workbench.action.compareEditor.previousChange", args = [
+#   'workbench.action.compareEditor.previousChange',
+# ], shortcut = "shift+alt+f5" }
+
+# clm = { name = "workbench.action.editor.changeLanguageMode", args = [
+#   'workbench.action.editor.changeLanguageMode',
+# ], shortcut = "cmd+k m" }
+
+# cm = [
+#   { name = "Context Menu", args = [
+#     'editor.action.showContextMenu',
+#   ], shortcut = "shift+f10" },
+#   { name = "settings.action.showContextMenu", args = [
+#     'settings.action.showContextMenu',
+#   ], shortcut = "shift+f9" },
+# ]
+
+# com = { name = "workbench.action.chat.openModePicker", args = [
+#   'workbench.action.chat.openModePicker',
+# ], shortcut = "cmd+." }
+
+
+# cpt = { name = "editor.changePasteType", args = ['editor.changePasteType'], shortcut = "cmd+." }
+
+
+# cwc = { name = "workbench.files.action.compareWithClipboard", args = [
+#   'workbench.files.action.compareWithClipboard',
+# ], shortcut = "cmd+k c" }
+
+# cws = { name = "workbench.files.action.compareWithSaved", args = [
+#   'workbench.files.action.compareWithSaved',
+# ], shortcut = "cmd+k d" }
+
+# ddn = { name = "editor.action.dirtydiff.next", args = [
+#   'editor.action.dirtydiff.next',
+# ], shortcut = "alt+f3" }
+
+# ddp = { name = "editor.action.dirtydiff.previous", args = [
+#   'editor.action.dirtydiff.previous',
+# ], shortcut = "shift+alt+f3" }
+
+# dib = { name = "editor.debug.action.toggleInlineBreakpoint", args = [
+#   'editor.debug.action.toggleInlineBreakpoint',
+# ], shortcut = "shift+f9" }
+
+# # dc = { name = "workbench.debug.panel.action.clearReplAction", args = ['workbench.debug.panel.action.clearReplAction'], shortcut = "cmd+k" }
+
+# dk = { name = "editor.action.defineKeybinding", args = [
+#   'editor.action.defineKeybinding',
+# ], shortcut = "cmd+k cmd+k" }
+
+# dll = { name = "editor.action.deleteLines", args = [
+#   'editor.action.deleteLines',
+# ], shortcut = "shift+cmd+k" }
+
+# dl = { name = "editor.detectLanguage", args = ['editor.detectLanguage'], shortcut = "shift+alt+d" }
+
+# eds = { name = "workbench.action.editorDictation.start", args = [
+#   'workbench.action.editorDictation.start',
+# ], shortcut = "alt+cmd+v" }
+
+# els = { name = "Expand Line Selection", args = ['expandLineSelection'], shortcut = "cmd+l" }
+
+# etf = { name = "editor.toggleFold", args = ['editor.toggleFold'], shortcut = "cmd+k cmd+l" }
+
+# fdn = { name = "Format Document None", args = [
+#   'editor.action.formatDocument.none',
+# ], shortcut = "shift+alt+f" }
+
+# foev = { name = "workbench.files.action.focusOpenEditorsView", args = [
+#   'workbench.files.action.focusOpenEditorsView',
+# ], shortcut = "cmd+k e" }
+
+# # fs = [
+# #   { name = "Format Selection", args = ['editor.action.formatSelection'], shortcut = "cmd+k cmd+f" },
+# # ]
+
+# fsb = { name = "Focus Side Bar", args = ['workbench.action.focusSideBar'], shortcut = "cmd+0" }
+
+# fsg = { name = "focusSuggestion", args = ['focusSuggestion'] }
+
+# fws = { name = "Find With Selection", args = ['actions.findWithSelection'], shortcut = "cmd+e" }
+
+
+
+
+# gns = { name = "editor.gotoNextSymbolFromResult", args = [
+#   'editor.gotoNextSymbolFromResult',
+# ], shortcut = "f12" }
+
+# hr = { name = "workbench.action.browser.hardReload", args = [
+#   'workbench.action.browser.hardReload',
+# ], shortcut = "shift+cmd+r" }
+
+# ice = { name = "editor.action.insertCursorAtEndOfEachLineSelected", args = [
+#   'editor.action.insertCursorAtEndOfEachLineSelected',
+# ], shortcut = "shift+alt+i" }
+
+# ind = { name = "Indent", args = ['editor.action.indentLines'], shortcut = "cmd+]" }
+
+# iprd = { name = "editor.action.inPlaceReplace.down", args = [
+#   'editor.action.inPlaceReplace.down',
+# ], shortcut = "shift+cmd+." }
+
+# ipru = { name = "editor.action.inPlaceReplace.up", args = [
+#   'editor.action.inPlaceReplace.up',
+# ], shortcut = "shift+cmd+," }
+
+# is = { name = "insertSnippet", args = ['insertSnippet'] }
+
+# jeig = { name = "workbench.action.joinEditorInGroup", args = [
+#   'workbench.action.joinEditorInGroup',
+# ], shortcut = "cmd+k shift+cmd+backslash" }
+
+# jl = { name = "Join Lines", args = ['editor.action.joinLines'], shortcut = "ctrl+j" }
+
+# kba = { name = "keybindings.editor.addKeybinding", args = [
+#   'keybindings.editor.addKeybinding',
+# ], shortcut = "cmd+k cmd+a" }
+
+# kbc = { name = "keybindings.editor.copyKeybindingEntry", args = [
+#   'keybindings.editor.copyKeybindingEntry',
+# ], shortcut = "cmd+c" }
+
+# kbd = { name = "keybindings.editor.defineWhenExpression", args = [
+#   'keybindings.editor.defineWhenExpression',
+# ], shortcut = "cmd+k cmd+e" }
+
+# kbr = { name = "keybindings.editor.removeKeybinding", args = [
+#   'keybindings.editor.removeKeybinding',
+# ], shortcut = "cmd+backspace" }
+
+# kbrs = { name = "keybindings.editor.recordSearchKeys", args = [
+#   'keybindings.editor.recordSearchKeys',
+# ], shortcut = "alt+cmd+k" }
+
+# kbs = { name = "keybindings.editor.searchKeybindings", args = [
+#   'keybindings.editor.searchKeybindings',
+# ], shortcut = "cmd+f" }
+
+# kbt = { name = "keybindings.editor.toggleSortByPrecedence", args = [
+#   'keybindings.editor.toggleSortByPrecedence',
+# ], shortcut = "alt+cmd+p" }
+
+# ke = { name = "Keep Editor", args = ['workbench.action.keepEditor'], shortcut = "cmd+k enter" }
+
+# kr = { name = "workbench.action.keybindingsReference", args = [
+#   'workbench.action.keybindingsReference',
+# ], shortcut = "cmd+k cmd+r" }
+
+# lbi = { name = "lineBreakInsert", args = ['lineBreakInsert'] }
+
+# le = { name = "editor.action.linkedEditing", args = [
+#   'editor.action.linkedEditing',
+# ], shortcut = "shift+cmd+f2" }
+
+# leig = { name = "workbench.action.lastEditorInGroup", args = [
+#   'workbench.action.lastEditorInGroup',
+# ], shortcut = "cmd+9" }
+
+# # egf = { name = "workbench.action.moveActiveEditorToFirstGroup", args = [
+# #   'workbench.action.moveActiveEditorToFirstGroup',
+# # ] }
+
+# mel = [
+#   { name = "workbench.action.moveActiveEditorLeftInGroup", args = [
+#     'workbench.action.moveActiveEditorLeftInGroup',
+#   ] },
+#   { name = "workbench.action.moveActiveEditorToLastGroup", args = [
+#     'workbench.action.moveActiveEditorToLastGroup',
+#   ] },
+# ]
+
+# men = { name = "workbench.action.moveActiveEditorToNextGroup", args = [
+#   'workbench.action.moveActiveEditorToNextGroup',
+# ] }
+
+# mep = { name = "workbench.action.moveActiveEditorToPreviousGroup", args = [
+#   'workbench.action.moveActiveEditorToPreviousGroup',
+# ] }
+
+# mer = { name = "workbench.action.moveActiveEditorRightInGroup", args = [
+#   'workbench.action.moveActiveEditorRightInGroup',
+# ] }
+
+
+# ms = { name = "editor.action.moveSelectionToNextFindMatch", args = [
+#   'editor.action.moveSelectionToNextFindMatch',
+# ], shortcut = "cmd+k cmd+d" }
+
+
+# nc = [
+#   { name = "workbench.action.editor.nextChange", args = [
+#     'workbench.action.editor.nextChange',
+#   ], shortcut = "alt+f5" },
+#   { name = "multiDiffEditor.goToNextChange", args = [
+#     'multiDiffEditor.goToNextChange',
+#   ], shortcut = "alt+f5" },
+# ]
+
+# ncra = { name = "editor.action.nextCommentedRangeAction", args = [
+#   'editor.action.nextCommentedRangeAction',
+# ], shortcut = "alt+f10" }
+
+# ncta = { name = "editor.action.nextCommentThreadAction", args = [
+#   'editor.action.nextCommentThreadAction',
+# ], shortcut = "alt+f9" }
+
+
+
+# nmfa = { name = "editor.action.nextMatchFindAction", args = [
+#   'editor.action.nextMatchFindAction',
+# ], shortcut = "f3" }
+
+# nph = { name = "showNextParameterHint", args = ['showNextParameterHint'] }
+
+# nsmfa = { name = "editor.action.nextSelectionMatchFindAction", args = [
+#   'editor.action.nextSelectionMatchFindAction',
+# ], shortcut = "cmd+f3" }
+
+# off = { name = "Open File Folder", args = [
+#   'workbench.action.files.openFileFolder',
+# ], shortcut = "cmd+o" }
+
+# ofvw = { name = "workbench.action.files.openFolderViaWorkspace", args = [
+#   'workbench.action.files.openFolderViaWorkspace',
+# ], shortcut = "cmd+o" }
+
+
+# olff = { name = "workbench.action.files.openLocalFileFolder", args = [
+#   'workbench.action.files.openLocalFileFolder',
+# ], shortcut = "cmd+o" }
+
+# otd = { name = "Outdent", args = ['editor.action.outdentLines'], shortcut = "cmd+[" }
+
+# # pc = { name = "Previous Change", args = [
+# #   'workbench.action.editor.previousChange',
+# # ], shortcut = "shift+alt+f5" }
+
+# # pcra = { name = "editor.action.previousCommentedRangeAction", args = [
+# #   'editor.action.previousCommentedRangeAction',
+# # ], shortcut = "shift+alt+f10" }
+
+# # pcta = { name = "editor.action.previousCommentThreadAction", args = [
+# #   'editor.action.previousCommentThreadAction',
+# # ], shortcut = "shift+alt+f9" }
+
+# nm = { name = "testing.goToNextMessage", args = ['testing.goToNextMessage'], shortcut = "alt+f8" }
+# tpm = { name = "testing.goToPreviousMessage", args = [
+#   'testing.goToPreviousMessage',
+# ], shortcut = "shift+alt+f8" }
+
+# pmfa = { name = "Previous Match Find Action", args = [
+#   'editor.action.previousMatchFindAction',
+# ], shortcut = "shift+f3" }
+
+# pph = { name = "showPrevParameterHint", args = ['showPrevParameterHint'] }
+
+# psmfa = { name = "editor.action.previousSelectionMatchFindAction", args = [
+#   'editor.action.previousSelectionMatchFindAction',
+# ], shortcut = "shift+cmd+f3" }
+
+# qi = { name = "workbench.action.quickInputBack", args = [
+#   'workbench.action.quickInputBack',
+# ], shortcut = "ctrl+-" }
+
+# qih = { name = "quickInput.hide", args = ['quickInput.hide'], shortcut = "ctrl+alt+cmd+escape" }
+
+# qith = { name = "quickInput.toggleHover", args = [
+#   'quickInput.toggleHover',
+# ], shortcut = "ctrl+space" }
+
+# qonr = { name = "workbench.action.quickOpenNavigateNextInRecentFilesPicker", args = [
+#   'workbench.action.quickOpenNavigateNextInRecentFilesPicker',
+# ], shortcut = "ctrl+r" }
+
+# qopr = { name = "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker", args = [
+#   'workbench.action.quickOpenNavigatePreviousInRecentFilesPicker',
+# ], shortcut = "ctrl+shift+r" }
+
+# qosn = { name = "workbench.action.quickOpenSelectNext", args = [
+#   'workbench.action.quickOpenSelectNext',
+# ], shortcut = "ctrl+n" }
+
+# qosp = { name = "workbench.action.quickOpenSelectPrevious", args = [
+#   'workbench.action.quickOpenSelectPrevious',
+# ], shortcut = "ctrl+p" }
+
+# raff = { name = "search.action.replaceAllInFolder", args = [
+#   'search.action.replaceAllInFolder',
+# ], shortcut = "shift+cmd+enter" }
+
+# rb = { name = "Remove Brackets", args = [
+#   'editor.action.removeBrackets',
+# ], shortcut = "alt+cmd+backspace" }
+
+# rda = { name = "Reveal Definition Aside", args = [
+#   'editor.action.revealDefinitionAside',
+# ], shortcut = "cmd+k f12" }
+
+
+# rl = { name = "Reload", args = ['workbench.action.browser.reload'], shortcut = "cmd+r" }
+
+# ro = { name = "Replace One", args = ['editor.action.replaceOne'], shortcut = "shift+cmd+1" }
+
+# rp = { name = "search.action.replace", args = ['search.action.replace'], shortcut = "shift+cmd+1" }
+
+# rs = { name = "rerunSearchEditorSearch", args = ['rerunSearchEditorSearch'] }
+
+# rpfl = { name = "repl.action.filter", args = ['repl.action.filter'], shortcut = "cmd+f" }
+
+# rpfn = { name = "repl.action.find", args = ['repl.action.find'], shortcut = "alt+cmd+f" }
+
+# rsf = { name = "search.action.restrictSearchToFolder", args = [
+#   'search.action.restrictSearchToFolder',
+# ], shortcut = "shift+alt+f" }
+
+# sac = { name = "editor.action.selectFromAnchorToCursor", args = [
+#   'editor.action.selectFromAnchorToCursor',
+# ], shortcut = "cmd+k cmd+k" }
+
+# sal = { name = "Save All", args = ['saveAll'], shortcut = "alt+cmd+s" }
+
+# sas = [
+#   { name = "Save As", args = [
+#     'workbench.action.files.saveAs',
+#   ], shortcut = "shift+cmd+s" },
+#   { name = "Show All Symbols", args = [
+#     'workbench.action.showAllSymbols',
+#   ], shortcut = "cmd+t" },
+# ]
+
+# shl = { name = "editor.action.selectHighlights", args = [
+#   'editor.action.selectHighlights',
+# ], shortcut = "shift+cmd+l" }
+
+# sld = { name = "Scroll Line Down", args = ['scrollLineDown'], shortcut = "ctrl+pagedown" }
+
+# slf = { name = "workbench.action.files.saveLocalFile", args = [
+#   'workbench.action.files.saveLocalFile',
+# ], shortcut = "shift+cmd+s" }
+
+# slu = { name = "Scroll Line Up", args = ['scrollLineUp'], shortcut = "ctrl+pageup" }
+
+# sns = { name = "selectNextSuggestion", args = ['selectNextSuggestion'] }
+
+
+# spd = { name = "Scroll Page Down", args = ['scrollPageDown'], shortcut = "cmd+pagedown" }
+
+# sps = { name = "selectPrevSuggestion", args = ['selectPrevSuggestion'] }
+
+# spu = { name = "Scroll Page Up", args = ['scrollPageUp'], shortcut = "cmd+pageup" }
+
+# ssa = { name = "editor.action.setSelectionAnchor", args = [
+#   'editor.action.setSelectionAnchor',
+# ], shortcut = "cmd+k cmd+b" }
+
+# sse = { name = "Smart Select Expand", args = [
+#   'editor.action.smartSelect.expand',
+# ], shortcut = "ctrl+shift+right" }
+
+# sss = { name = "Smart Select Contract", args = [
+#   'editor.action.smartSelect.shrink',
+# ], shortcut = "ctrl+shift+left" }
+
+# st = { name = "Select Theme", args = ['workbench.action.selectTheme'], shortcut = "cmd+k cmd+t" }
+
+# stb = { name = "Scroll to Bottom", args = ['Scroll to Bottom'] }
+
+# stcw = { name = "workbench.action.terminal.sizeToContentWidth", args = [
+#   'workbench.action.terminal.sizeToContentWidth',
+# ], shortcut = "alt+z" }
+
+# stt = { name = "Scroll to Top", args = ['Scroll to Top'] }
+
+# svwf = { name = "Save Without Formatting", args = [
+#   'workbench.action.files.saveWithoutFormatting',
+# ], shortcut = "cmd+k s" }
+
+# # sw = { name = "Search Workspace", args = ['workbench.action.searchWorkspace'] }
+
+# swa = { name = "search.action.searchWithAI", args = [
+#   'search.action.searchWithAI',
+# ], shortcut = "cmd+i" }
+
+# swc = { name = "suggestWidgetCopy", args = ['suggestWidgetCopy'] }
+
+
+# tab = { name = "workbench.action.toggleAuxiliaryBar", args = [
+#   'workbench.action.toggleAuxiliaryBar',
+# ], shortcut = "alt+cmd+b" }
+
+# tas = { name = "settings.action.toggleAiSearch", args = [
+#   'settings.action.toggleAiSearch',
+# ], shortcut = "cmd+i" }
+
+# tbi = { name = "mergeEditor.toggleBetweenInputs", args = [
+#   'mergeEditor.toggleBetweenInputs',
+# ], shortcut = "shift+cmd+t" }
+
+# tdt = { name = "workbench.action.toggleDevTools", args = [
+#   'workbench.action.toggleDevTools',
+# ], shortcut = "alt+cmd+i" }
+
+# teg = { name = "workbench.action.toggleEditorGroupLayout", args = [
+#   'workbench.action.toggleEditorGroupLayout',
+# ], shortcut = "alt+cmd+0" }
+
+# tem = [
+#   { name = "toggleExplainMode", args = [
+#     'toggleExplainMode',
+#   ] },
+#   { name = "terminalSuggestToggleExplainMode", args = [
+#     'terminalSuggestToggleExplainMode',
+#   ] },
+# ]
+
+# tfcs = [
+#   { name = "Toggle Find Case Sensitive", args = [
+#     'toggleFindCaseSensitive',
+#   ], shortcut = "alt+cmd+c" },
+#   { name = "workbench.action.terminal.toggleFindCaseSensitive", args = [
+#     'workbench.action.terminal.toggleFindCaseSensitive',
+#   ], shortcut = "alt+cmd+c" },
+# ]
+
+# tfis = { name = "Toggle Find In Selection", args = [
+#   'toggleFindInSelection',
+# ], shortcut = "alt+cmd+l" }
+
+# tfr = [
+#   { name = "Toggle Find Regex", args = [
+#     'toggleFindRegex',
+#   ], shortcut = "alt+cmd+r" },
+#   { name = "workbench.action.terminal.toggleFindRegex", args = [
+#     'workbench.action.terminal.toggleFindRegex',
+#   ], shortcut = "alt+cmd+r" },
+# ]
+
+# tfww = [
+#   { name = "Toggle Find Whole Word", args = [
+#     'toggleFindWholeWord',
+#   ], shortcut = "alt+cmd+w" },
+#   { name = "workbench.action.terminal.toggleFindWholeWord", args = [
+#     'workbench.action.terminal.toggleFindWholeWord',
+#   ], shortcut = "alt+cmd+w" },
+# ]
+
+# tl = { name = "Transpose Letters", args = ['editor.action.transposeLetters'], shortcut = "ctrl+t" }
+
+# tme = { name = "workbench.action.toggleMaximizeEditorGroup", args = [
+#   'workbench.action.toggleMaximizeEditorGroup',
+# ], shortcut = "cmd+k cmd+m" }
+
+
+# to = { name = "Toggle Output", args = [
+#   'workbench.action.output.toggleOutput',
+# ], shortcut = "shift+cmd+u" }
+
+# tpc = { name = "Toggle Preserve Case", args = ['togglePreserveCase'], shortcut = "alt+cmd+p" }
+
+# tpf = { name = "togglePeekWidgetFocus", args = ['togglePeekWidgetFocus'] }
+
+# tph = { name = "Trigger Parameter Hints", args = [
+#   'editor.action.triggerParameterHints',
+# ], shortcut = "shift+cmd+space" }
+
+# tqd = [
+#   { name = "toggleQuickDiffWidgetFocus", args = [
+#     'toggleQuickDiffWidgetFocus',
+#   ] },
+#   { name = "toggleQuickDiffWidgetFocus", args = [
+#     'toggleQuickDiffWidgetFocus',
+#   ] },
+# ]
+
+
+
+# tsg = { name = "editor.action.triggerSuggest", args = [
+#   'editor.action.triggerSuggest',
+# ], shortcut = "cmd+i" }
+
+# tsgd = { name = "toggleSuggestionDetails", args = ['toggleSuggestionDetails'] }
+
+# tsgf = { name = "toggleSuggestionFocus", args = ['toggleSuggestionFocus'] }
+
+# tsh = { name = "Toggle Suggest Details", args = ['toggleSuggestionDetails'], shortcut = "cmd+i" }
+
+
+# tsr = { name = "editor.action.toggleScreenReaderAccessibilityMode", args = [
+#   'editor.action.toggleScreenReaderAccessibilityMode',
+# ], shortcut = "cmd+e" }
+
+# tsw = { name = "workbench.action.terminal.searchWorkspace", args = [
+#   'workbench.action.terminal.searchWorkspace',
+# ], shortcut = "shift+cmd+f" }
+
+# ttf = { name = "editor.action.toggleTabFocusMode", args = [
+#   'editor.action.toggleTabFocusMode',
+# ], shortcut = "ctrl+shift+m" }
+
+# ttw = { name = "editor.action.trimTrailingWhitespace", args = [
+#   'editor.action.trimTrailingWhitespace',
+# ], shortcut = "cmd+k cmd+x" }
+
+# tww = { name = "Toggle Word Wrap", args = ['editor.action.toggleWordWrap'], shortcut = "alt+z" }
+
+
+# whn = { name = "editor.action.wordHighlight.next", args = [
+#   'editor.action.wordHighlight.next',
+# ], shortcut = "f7" }
+
+# whp = { name = "editor.action.wordHighlight.prev", args = [
+#   'editor.action.wordHighlight.prev',
+# ], shortcut = "shift+f7" }
+
+
+# std = { name = "workbench.action.terminal.suggestToggleDetails", args = [
+#   'workbench.action.terminal.suggestToggleDetails',
+# ], shortcut = "cmd+i" }
+
+# stf = { name = "workbench.action.terminal.suggestToggleDetailsFocus", args = [
+#   'workbench.action.terminal.suggestToggleDetailsFocus',
+# ], shortcut = "ctrl+alt+space" }
+# apa = { name = "notification.acceptPrimaryAction", args = [
+#   'notification.acceptPrimaryAction',
+# ], shortcut = "shift+cmd+a" }
