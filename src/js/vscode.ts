@@ -1,5 +1,5 @@
 import fs from "fs";
-import { exists } from "#/utils/file.ts";
+import { exists } from "./utils/file.ts";
 import path from "path";
 import { tap } from "chord";
 import spawn from "nano-spawn-compat";

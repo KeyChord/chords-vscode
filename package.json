@@ -3,12 +3,9 @@
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@10.33.0",
-  "imports": {
-    "#/*": "./src/js/*"
-  },
   "devDependencies": {
-    "@keychord/tsconfig": "^0.0.2",
-    "chord-types": "^0.1.0",
+    "@keychord/tsconfig": "^0.0.5",
+    "@keychord/config": "^0.0.2",
     "typescript": "^6.0.2"
   },
   "dependencies": {
