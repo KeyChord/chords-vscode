@@ -1,1180 +1,1177 @@
-[config]
 name = "VSCode"
+meta = { appPath = "/Applications/Visual Studio Code.app" }
 
-[config.js]
-module = '''
-import buildHandler from "dist/vscode.js"
-export default buildHandler(import.meta);
-'''
+[js]
+vscode = 'vscode.js'
 
 [chords]
 '?f' = { name = "Find / File" }
 
 # Find
 'f[' = [
-  { name = "Find Previous", args = [
+  { name = "Find Previous", 'js:vscode' = [
     'workbench.action.browser.findPrevious',
   ], shortcut = "shift+cmd+g" },
-  { name = "workbench.action.terminal.findPrevious", args = [
+  { name = "workbench.action.terminal.findPrevious", 'js:vscode' = [
     'workbench.action.terminal.findPrevious',
   ], shortcut = "shift+f3" },
 ]
 'f]' = [
-  { name = "Find Next", args = [
+  { name = "Find Next", 'js:vscode' = [
     'workbench.action.browser.findNext',
   ], shortcut = "cmd+g" },
-  { name = "workbench.action.terminal.findNext", args = [
+  { name = "workbench.action.terminal.findNext", 'js:vscode' = [
     'workbench.action.terminal.findNext',
   ], shortcut = "f3" },
 ]
-fr = { name = "Find and Replace", args = [
+fr = { name = "Find and Replace", 'js:vscode' = [
   'editor.action.startFindReplaceAction',
 ], shortcut = "alt+cmd+f" }
-fg = { name = "Find Globally", args = ['workbench.action.findInFiles'], shortcut = "shift+cmd+f" }
-frg = { name = "Find Replace Globally", args = [
+fg = { name = "Find Globally", 'js:vscode' = ['workbench.action.findInFiles'], shortcut = "shift+cmd+f" }
+frg = { name = "Find Replace Globally", 'js:vscode' = [
   'workbench.action.replaceInFiles',
 ], shortcut = "shift+cmd+h" }
 
 # File
-fp = { name = "File: Path", args = ['copyFilePath'], shortcut = "alt+cmd+c" }
-# fp = { name = "File: Path", args = ['workbench.action.files.copyPathOfActiveFile'], shortcut = "cmd+k p" }
-frp = { name = "File: Relative Path", args = [
+fp = { name = "File: Path", 'js:vscode' = ['copyFilePath'], shortcut = "alt+cmd+c" }
+# fp = { name = "File: Path", 'js:vscode' = ['workbench.action.files.copyPathOfActiveFile'], shortcut = "cmd+k p" }
+frp = { name = "File: Relative Path", 'js:vscode' = [
   'copyRelativeFilePath',
 ], shortcut = "shift+alt+cmd+c" }
 fn = { name = "File: New", shortcut = "ctrl+opt+cmd+n" }
-fnn = { name = "File: New Name", args = ['renameFile'] }
-fh = { name = "File: Here", args = ['explorer.newFile'] }
-fd = { name = "File: Directory", args = ['explorer.newFolder'] }
-fc = { name = "File: Close Directory", args = [
+fnn = { name = "File: New Name", 'js:vscode' = ['renameFile'] }
+fh = { name = "File: Here", 'js:vscode' = ['explorer.newFile'] }
+fd = { name = "File: Directory", 'js:vscode' = ['explorer.newFolder'] }
+fc = { name = "File: Close Directory", 'js:vscode' = [
   'workbench.action.closeFolder',
 ], shortcut = "cmd+k f" }
-fnu = { name = "File: New Untitled File", args = [
+fnu = { name = "File: New Untitled File", 'js:vscode' = [
   'workbench.action.files.newUntitledFile',
 ], shortcut = "cmd+n" }
-ft = { name = "File: Trash", args = ['deleteFile'], shortcut = "alt+cmd+backspace" }
-fm = { name = "File: Format", args = ['editor.action.formatDocument'], shortcut = "shift+alt+f" }
-fs = { name = "File: Show", args = ['revealInExplorer'] }
-fra = { name = "search.action.replaceAllInFile", args = [
+ft = { name = "File: Trash", 'js:vscode' = ['deleteFile'], shortcut = "alt+cmd+backspace" }
+fm = { name = "File: Format", 'js:vscode' = ['editor.action.formatDocument'], shortcut = "shift+alt+f" }
+fs = { name = "File: Show", 'js:vscode' = ['revealInExplorer'] }
+fra = { name = "search.action.replaceAllInFile", 'js:vscode' = [
   'search.action.replaceAllInFile',
 ], shortcut = "shift+cmd+enter" }
-fo = { name = "File: Open", args = ['workbench.action.files.openFile'], shortcut = "cmd+o" }
-for = { name = "File: Open Recent", args = ['workbench.action.openRecent'], shortcut = "ctrl+r" }
+fo = { name = "File: Open", 'js:vscode' = ['workbench.action.files.openFile'], shortcut = "cmd+o" }
+for = { name = "File: Open Recent", 'js:vscode' = ['workbench.action.openRecent'], shortcut = "ctrl+r" }
 
 ## Fold
 '?ff' = { name = "Folding: Fold" }
-ff = { name = "Folding: Fold", args = ['editor.fold'], shortcut = "alt+cmd+[" }
-ffa = { name = "Folding: Fold All", args = ['editor.foldAll'], shortcut = "cmd+k cmd+0" }
-ffc = { name = "Folding: Fold Comments", args = [
+ff = { name = "Folding: Fold", 'js:vscode' = ['editor.fold'], shortcut = "alt+cmd+[" }
+ffa = { name = "Folding: Fold All", 'js:vscode' = ['editor.foldAll'], shortcut = "cmd+k cmd+0" }
+ffc = { name = "Folding: Fold Comments", 'js:vscode' = [
   'editor.foldAllBlockComments',
 ], shortcut = "cmd+k cmd+/" }
-ffr = { name = "Folding: Fold Recursively", args = [
+ffr = { name = "Folding: Fold Recursively", 'js:vscode' = [
   'editor.foldRecursively',
 ], shortcut = "cmd+k cmd+[" }
-ffe = { name = "Folding: Fold All Except", args = [
+ffe = { name = "Folding: Fold All Except", 'js:vscode' = [
   'editor.foldAllExcept',
 ], shortcut = "cmd+k cmd+-" }
-ffm = { name = "Folding: Fold All Marker Regions", args = [
+ffm = { name = "Folding: Fold All Marker Regions", 'js:vscode' = [
   'editor.foldAllMarkerRegions',
 ], shortcut = "cmd+k cmd+8" }
 
 ## Unfold
 '?fu' = { name = "Folding: Unfold" }
-fu = { name = "Folding: Unfold", args = ['editor.unfold'], shortcut = "alt+cmd+]" }
-fua = { name = "Folding: Unfold All", args = ['editor.unfoldAll'], shortcut = "cmd+k cmd+j" }
-fuc = { name = "Folding: Unfold Comments", args = ['editor.unfoldAllBlockComments'] }
-fur = { name = "Folding: Unfold Recursively", args = [
+fu = { name = "Folding: Unfold", 'js:vscode' = ['editor.unfold'], shortcut = "alt+cmd+]" }
+fua = { name = "Folding: Unfold All", 'js:vscode' = ['editor.unfoldAll'], shortcut = "cmd+k cmd+j" }
+fuc = { name = "Folding: Unfold Comments", 'js:vscode' = ['editor.unfoldAllBlockComments'] }
+fur = { name = "Folding: Unfold Recursively", 'js:vscode' = [
   'editor.unfoldRecursively',
 ], shortcut = "cmd+k cmd+]" }
-fue = { name = "Folding: Unfold All Except", args = [
+fue = { name = "Folding: Unfold All Except", 'js:vscode' = [
   'editor.unfoldAllExcept',
 ], shortcut = "cmd+k cmd+=" }
-fum = { name = "Folding: Unfold All Marker Regions", args = [
+fum = { name = "Folding: Unfold All Marker Regions", 'js:vscode' = [
   'editor.unfoldAllMarkerRegions',
 ], shortcut = "cmd+k cmd+9" }
 
-ffs = { name = "Folding: From Selection", args = [
+ffs = { name = "Folding: From Selection", 'js:vscode' = [
   'editor.createFoldingRangeFromSelection',
 ], shortcut = "cmd+k cmd+," }
-frm = { name = "Folding: Remove Manual", args = [
+frm = { name = "Folding: Remove Manual", 'js:vscode' = [
   'editor.removeManualFoldingRanges',
 ], shortcut = "cmd+k cmd+." }
-ftr = { name = "Folding: Toggle Recursively", args = [
+ftr = { name = "Folding: Toggle Recursively", 'js:vscode' = [
   'editor.toggleFoldRecursively',
 ], shortcut = "cmd+k shift+cmd+l" }
 
 '?f{1..7}' = { name = "Folding: Level" }
-f1 = { name = "editor.foldLevel1", args = ['editor.foldLevel1'], shortcut = "cmd+k cmd+1" }
-f2 = { name = "editor.foldLevel2", args = ['editor.foldLevel2'], shortcut = "cmd+k cmd+2" }
-f3 = { name = "editor.foldLevel3", args = ['editor.foldLevel3'], shortcut = "cmd+k cmd+3" }
-f4 = { name = "editor.foldLevel4", args = ['editor.foldLevel4'], shortcut = "cmd+k cmd+4" }
-f5 = { name = "editor.foldLevel5", args = ['editor.foldLevel5'], shortcut = "cmd+k cmd+5" }
-f6 = { name = "editor.foldLevel6", args = ['editor.foldLevel6'], shortcut = "cmd+k cmd+6" }
-f7 = { name = "editor.foldLevel7", args = ['editor.foldLevel7'], shortcut = "cmd+k cmd+7" }
+f1 = { name = "editor.foldLevel1", 'js:vscode' = ['editor.foldLevel1'], shortcut = "cmd+k cmd+1" }
+f2 = { name = "editor.foldLevel2", 'js:vscode' = ['editor.foldLevel2'], shortcut = "cmd+k cmd+2" }
+f3 = { name = "editor.foldLevel3", 'js:vscode' = ['editor.foldLevel3'], shortcut = "cmd+k cmd+3" }
+f4 = { name = "editor.foldLevel4", 'js:vscode' = ['editor.foldLevel4'], shortcut = "cmd+k cmd+4" }
+f5 = { name = "editor.foldLevel5", 'js:vscode' = ['editor.foldLevel5'], shortcut = "cmd+k cmd+5" }
+f6 = { name = "editor.foldLevel6", 'js:vscode' = ['editor.foldLevel6'], shortcut = "cmd+k cmd+6" }
+f7 = { name = "editor.foldLevel7", 'js:vscode' = ['editor.foldLevel7'], shortcut = "cmd+k cmd+7" }
 
 # History
-hb = { name = "History: Back", args = ['workbench.action.navigateBack'], shortcut = "BrowserBack" }
-hf = { name = "History: Forward", args = [
+hb = { name = "History: Back", 'js:vscode' = ['workbench.action.navigateBack'], shortcut = "BrowserBack" }
+hf = { name = "History: Forward", 'js:vscode' = [
   'workbench.action.navigateForward',
 ], shortcut = "BrowserForward" }
 
 # Panels
 '?p' = { name = "Panel" }
-pa = { name = "Panel: AI", args = ['workbench.panel.chat'], shortcut = "ctrl+cmd+i" }
-pd = { name = "Panel: Debug", args = ['workbench.view.debug'], shortcut = "shift+cmd+d" }
-pe = { name = "Panel: Explorer", args = ['workbench.view.explorer'], shortcut = "shift+cmd+e" }
-pg = { name = "Panel: Git", args = ['workbench.view.scm'], shortcut = "ctrl+shift+g" }
-pmd = { name = "Panel: Move Down", args = ['views.moveViewDown'], shortcut = "cmd+k down" }
-pml = { name = "Panel: Move Left", args = ['views.moveViewLeft'], shortcut = "cmd+k left" }
-pmr = { name = "Panel: Move Right", args = ['views.moveViewRight'], shortcut = "cmd+k right" }
-pmu = { name = "Panel: Move Up", args = ['views.moveViewUp'], shortcut = "cmd+k up" }
-pp = { name = "Panel: Problems", args = [
+pa = { name = "Panel: AI", 'js:vscode' = ['workbench.panel.chat'], shortcut = "ctrl+cmd+i" }
+pd = { name = "Panel: Debug", 'js:vscode' = ['workbench.view.debug'], shortcut = "shift+cmd+d" }
+pe = { name = "Panel: Explorer", 'js:vscode' = ['workbench.view.explorer'], shortcut = "shift+cmd+e" }
+pg = { name = "Panel: Git", 'js:vscode' = ['workbench.view.scm'], shortcut = "ctrl+shift+g" }
+pmd = { name = "Panel: Move Down", 'js:vscode' = ['views.moveViewDown'], shortcut = "cmd+k down" }
+pml = { name = "Panel: Move Left", 'js:vscode' = ['views.moveViewLeft'], shortcut = "cmd+k left" }
+pmr = { name = "Panel: Move Right", 'js:vscode' = ['views.moveViewRight'], shortcut = "cmd+k right" }
+pmu = { name = "Panel: Move Up", 'js:vscode' = ['views.moveViewUp'], shortcut = "cmd+k up" }
+pp = { name = "Panel: Problems", 'js:vscode' = [
   'workbench.actions.view.problems',
 ], shortcut = "shift+cmd+m" }
-ps = { name = "Panel: Search", args = ['workbench.view.search'], shortcut = "shift+cmd+f" }
-psb = { name = "Panel: Side Bar", args = [
+ps = { name = "Panel: Search", 'js:vscode' = ['workbench.view.search'], shortcut = "shift+cmd+f" }
+psb = { name = "Panel: Side Bar", 'js:vscode' = [
   'workbench.action.toggleSidebarVisibility',
 ], shortcut = "cmd+b" }
-pm = { name = "Panel: Marketplace", args = ['workbench.view.extensions'], shortcut = "shift+cmd+x" }
-po = { name = "Panel: Open", args = [
+pm = { name = "Panel: Marketplace", 'js:vscode' = ['workbench.view.extensions'], shortcut = "shift+cmd+x" }
+po = { name = "Panel: Open", 'js:vscode' = [
   'workbench.action.quickOpenView',
 ], shortcut = "cmd+shift+p v i e w space" }
-pf = { name = "Panel: Forward", args = [
+pf = { name = "Panel: Forward", 'js:vscode' = [
   'workbench.action.quickOpenNavigateNextInViewPicker',
 ], shortcut = "ctrl+q" }
-pb = { name = "Panel: Back", args = [
+pb = { name = "Panel: Back", 'js:vscode' = [
   'workbench.action.quickOpenNavigatePreviousInViewPicker',
 ], shortcut = "ctrl+shift+q" }
-pi = { name = "Panel: Info", args = ['workbench.action.togglePanel'], shortcut = "cmd+j" }
-px = { name = "Panel: Next", args = ['workbench.action.focusNextPart'], shortcut = "f6" }
-pv = { name = "Panel: Forward", args = [
+pi = { name = "Panel: Info", 'js:vscode' = ['workbench.action.togglePanel'], shortcut = "cmd+j" }
+px = { name = "Panel: Next", 'js:vscode' = ['workbench.action.focusNextPart'], shortcut = "f6" }
+pv = { name = "Panel: Forward", 'js:vscode' = [
   'workbench.action.focusPreviousPart',
 ], shortcut = "shift+f6" }
-pgk = { name = "Page: Keybindings", args = [
+pgk = { name = "Page: Keybindings", 'js:vscode' = [
   'workbench.action.openGlobalKeybindings',
 ], shortcut = "cmd+k cmd+s" }
-pgs = { name = "Page: Settings", args = ['workbench.action.openSettings'], shortcut = "cmd+," }
+pgs = { name = "Page: Settings", 'js:vscode' = ['workbench.action.openSettings'], shortcut = "cmd+," }
 
 '?e' = { name = "Editor" }
-ea = { name = "Editor: Actions", args = ['editor.action.quickFix'], shortcut = "cmd+." }
-ek = { name = "Editor: Kwik Fix", args = ['editor.action.quickFix'], shortcut = "cmd+." }
-es = { name = "Editor: Focus", args = ['workbench.action.focusActiveEditorGroup'] }
-ep = { name = "Editor: Pin", args = ['workbench.action.pinEditor'], shortcut = "cmd+k shift+enter" }
-eu = { name = "Editor: Unpin", args = [
+ea = { name = "Editor: Actions", 'js:vscode' = ['editor.action.quickFix'], shortcut = "cmd+." }
+ek = { name = "Editor: Kwik Fix", 'js:vscode' = ['editor.action.quickFix'], shortcut = "cmd+." }
+es = { name = "Editor: Focus", 'js:vscode' = ['workbench.action.focusActiveEditorGroup'] }
+ep = { name = "Editor: Pin", 'js:vscode' = ['workbench.action.pinEditor'], shortcut = "cmd+k shift+enter" }
+eu = { name = "Editor: Unpin", 'js:vscode' = [
   'workbench.action.unpinEditor',
 ], shortcut = "cmd+k shift+enter" }
-esa = { name = "Editor: Show All", args = [
+esa = { name = "Editor: Show All", 'js:vscode' = [
   'workbench.action.showAllEditors',
 ], shortcut = "alt+cmd+tab" }
-eo = { name = "Editor: Open Recently Closed", args = [
+eo = { name = "Editor: Open Recently Closed", 'js:vscode' = [
   'workbench.action.reopenClosedEditor',
 ], shortcut = "shift+cmd+t" }
-'e[' = { name = "Editor: Previous", args = [
+'e[' = { name = "Editor: Previous", 'js:vscode' = [
   'workbench.action.previousEditorInGroup',
 ], shortcut = "cmd+k alt+cmd+left" }
-'e]' = { name = "Editor: Next", args = ['workbench.action.nextEditor'], shortcut = "shift+cmd+]" }
-'e]g' = { name = "Editor: Next in Group", args = [
+'e]' = { name = "Editor: Next", 'js:vscode' = ['workbench.action.nextEditor'], shortcut = "shift+cmd+]" }
+'e]g' = { name = "Editor: Next in Group", 'js:vscode' = [
   'workbench.action.nextEditorInGroup',
 ], shortcut = "cmd+k alt+cmd+right" }
-ef = { name = "Editor: Forward", args = [
+ef = { name = "Editor: Forward", 'js:vscode' = [
   'workbench.action.quickOpenLeastRecentlyUsedEditorInGroup',
 ], shortcut = "ctrl+shift+tab" }
-eb = { name = "Editor: Back", args = [
+eb = { name = "Editor: Back", 'js:vscode' = [
   'workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup',
 ], shortcut = "ctrl+tab" }
 '?eq' = { name = "Editor: Quit" }
-eq = { name = "Editor: Quit", args = ['workbench.action.closeActiveEditor'], shortcut = "cmd+w" }
-eqa = { name = "Editor: Quit All", args = [
+eq = { name = "Editor: Quit", 'js:vscode' = ['workbench.action.closeActiveEditor'], shortcut = "cmd+w" }
+eqa = { name = "Editor: Quit All", 'js:vscode' = [
   'workbench.action.closeAllEditors',
 ], shortcut = "cmd+k cmd+w" }
-eqo = { name = "Editor: Quit Others", args = [
+eqo = { name = "Editor: Quit Others", 'js:vscode' = [
   'workbench.action.closeOtherEditors',
 ], shortcut = "alt+cmd+t" }
-equ = { name = "Split: Quit Unmodified", args = [
+equ = { name = "Split: Quit Unmodified", 'js:vscode' = [
   'workbench.action.closeUnmodifiedEditors',
 ], shortcut = "cmd+k u" }
 
 '?eg' = { name = "Editor Group" }
-egd = { name = "workbench.action.moveActiveEditorGroupDown", args = [
+egd = { name = "workbench.action.moveActiveEditorGroupDown", 'js:vscode' = [
   'workbench.action.moveActiveEditorGroupDown',
 ], shortcut = "cmd+k down" }
-egl = { name = "workbench.action.moveActiveEditorGroupLeft", args = [
+egl = { name = "workbench.action.moveActiveEditorGroupLeft", 'js:vscode' = [
   'workbench.action.moveActiveEditorGroupLeft',
 ], shortcut = "cmd+k left" }
-egr = { name = "workbench.action.moveActiveEditorGroupRight", args = [
+egr = { name = "workbench.action.moveActiveEditorGroupRight", 'js:vscode' = [
   'workbench.action.moveActiveEditorGroupRight',
 ], shortcut = "cmd+k right" }
-egu = { name = "workbench.action.moveActiveEditorGroupUp", args = [
+egu = { name = "workbench.action.moveActiveEditorGroupUp", 'js:vscode' = [
   'workbench.action.moveActiveEditorGroupUp',
 ], shortcut = "cmd+k up" }
 
 
 '?t' = { name = "Tab / Terminal" }
-t1 = { name = "Tab 1", args = ['workbench.action.openEditorAtIndex1'], shortcut = "ctrl+1" }
-t2 = { name = "Tab 2", args = ['workbench.action.openEditorAtIndex2'], shortcut = "ctrl+2" }
-t3 = { name = "Tab 3", args = ['workbench.action.openEditorAtIndex3'], shortcut = "ctrl+3" }
-t4 = { name = "Tab 4", args = ['workbench.action.openEditorAtIndex4'], shortcut = "ctrl+4" }
-t5 = { name = "Tab 5", args = ['workbench.action.openEditorAtIndex5'], shortcut = "ctrl+5" }
-t6 = { name = "Tab 6", args = ['workbench.action.openEditorAtIndex6'], shortcut = "ctrl+6" }
-t7 = { name = "Tab 7", args = ['workbench.action.openEditorAtIndex7'], shortcut = "ctrl+7" }
-t8 = { name = "Tab 8", args = ['workbench.action.openEditorAtIndex8'], shortcut = "ctrl+8" }
-t9 = { name = "Tab 9", args = ['workbench.action.openEditorAtIndex9'], shortcut = "ctrl+9" }
-ta = { name = "Terminal: Actions", args = [
+t1 = { name = "Tab 1", 'js:vscode' = ['workbench.action.openEditorAtIndex1'], shortcut = "ctrl+1" }
+t2 = { name = "Tab 2", 'js:vscode' = ['workbench.action.openEditorAtIndex2'], shortcut = "ctrl+2" }
+t3 = { name = "Tab 3", 'js:vscode' = ['workbench.action.openEditorAtIndex3'], shortcut = "ctrl+3" }
+t4 = { name = "Tab 4", 'js:vscode' = ['workbench.action.openEditorAtIndex4'], shortcut = "ctrl+4" }
+t5 = { name = "Tab 5", 'js:vscode' = ['workbench.action.openEditorAtIndex5'], shortcut = "ctrl+5" }
+t6 = { name = "Tab 6", 'js:vscode' = ['workbench.action.openEditorAtIndex6'], shortcut = "ctrl+6" }
+t7 = { name = "Tab 7", 'js:vscode' = ['workbench.action.openEditorAtIndex7'], shortcut = "ctrl+7" }
+t8 = { name = "Tab 8", 'js:vscode' = ['workbench.action.openEditorAtIndex8'], shortcut = "ctrl+8" }
+t9 = { name = "Tab 9", 'js:vscode' = ['workbench.action.openEditorAtIndex9'], shortcut = "ctrl+9" }
+ta = { name = "Terminal: Actions", 'js:vscode' = [
   'workbench.action.terminal.showQuickFixes',
 ], shortcut = "cmd+." }
-tc = { name = "Terminal: Clear", args = [
+tc = { name = "Terminal: Clear", 'js:vscode' = [
   'workbench.action.terminal.clear',
 ], shortcut = "cmd+k" }
-ti = { name = "Terminal: Input Chat", args = ['workbench.action.terminal.chat.start'], shortcut = "cmd+i" }
-tn = { name = "workbench.action.terminal.new", args = [
+ti = { name = "Terminal: Input Chat", 'js:vscode' = ['workbench.action.terminal.chat.start'], shortcut = "cmd+i" }
+tn = { name = "workbench.action.terminal.new", 'js:vscode' = [
   'workbench.action.terminal.new", shortcut = "ctrl+shift+`',
 ] }
-tt = { name = "Terminal: Toggle", args = [
+tt = { name = "Terminal: Toggle", 'js:vscode' = [
   'workbench.action.terminal.toggleTerminal`", shortcut = "ctrl+',
 ] }
-tl = { name = "Terminal: Link Open", args = [
+tl = { name = "Terminal: Link Open", 'js:vscode' = [
   'workbench.action.terminal.openDetectedLink',
 ], shortcut = "shift+cmd+o" }
-ts = { name = "Terminal: Split", args = [
+ts = { name = "Terminal: Split", 'js:vscode' = [
   'workbench.action.terminal.splitActiveTab',
 ], shortcut = "ctrl+shift+5" }
-ton = { name = "Terminal: Open Native", args = [
+ton = { name = "Terminal: Open Native", 'js:vscode' = [
   'workbench.action.terminal.openNativeConsole',
 ], shortcut = "shift+cmd+c" }
 
 '?s' = { name = "Search / Split" }
-sg = { name = "Search Globally", args = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
-sf = { name = "Search Files", args = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
-sa = { name = "Split: Auto", args = ['workbench.action.splitEditor'], shortcut = "cmd+backslash" }
-sl = { name = "Split: Left", args = [
+sg = { name = "Search Globally", 'js:vscode' = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
+sf = { name = "Search Files", 'js:vscode' = ['workbench.action.quickOpen'], shortcut = "cmd+p" }
+sa = { name = "Split: Auto", 'js:vscode' = ['workbench.action.splitEditor'], shortcut = "cmd+backslash" }
+sl = { name = "Split: Left", 'js:vscode' = [
   'workbench.action.splitEditorLeft',
 ], shortcut = "cmd+k cmd+backslash" }
-sr = { name = "Split: Right", args = [
+sr = { name = "Split: Right", 'js:vscode' = [
   'workbench.action.splitEditorRight',
 ], shortcut = "cmd+k cmd+backslash" }
-su = { name = "Split Up", args = [
+su = { name = "Split Up", 'js:vscode' = [
   'workbench.action.splitEditorUp',
 ], shortcut = "cmd+k cmd+backslash" }
-sd = { name = "Split: Down", args = [
+sd = { name = "Split: Down", 'js:vscode' = [
   'workbench.action.splitEditorDown',
 ], shortcut = "cmd+k cmd+backslash" }
-so = { name = "Split: Orthogonal", args = [
+so = { name = "Split: Orthogonal", 'js:vscode' = [
   'workbench.action.splitEditorOrthogonal',
 ], shortcut = "cmd+k cmd+backslash" }
-si = { name = "Split: Inner", args = [
+si = { name = "Split: Inner", 'js:vscode' = [
   'workbench.action.splitEditorInGroup',
 ], shortcut = "cmd+k shift+cmd+backslash" }
-sn = { name = "Split: North", args = [
+sn = { name = "Split: North", 'js:vscode' = [
   'workbench.action.focusAboveGroup',
 ], shortcut = "cmd+k cmd+up" }
-ss = { name = "Split: South", args = [
+ss = { name = "Split: South", 'js:vscode' = [
   'workbench.action.focusBelowGroup',
 ], shortcut = "cmd+k cmd+down" }
-sw = { name = "Split: West", args = [
+sw = { name = "Split: West", 'js:vscode' = [
   'workbench.action.focusLeftGroup',
 ], shortcut = "cmd+k cmd+left" }
-se = { name = "Split: East", args = [
+se = { name = "Split: East", 'js:vscode' = [
   'workbench.action.focusRightGroup',
 ], shortcut = "cmd+k cmd+right" }
-s1 = { name = "Split: 1st", args = ['workbench.action.focusFirstEditorGroup'], shortcut = "cmd+1" }
-s2 = { name = "Split: 2nd", args = ['workbench.action.focusSecondEditorGroup'], shortcut = "cmd+2" }
-s3 = { name = "Split: 3rd", args = ['workbench.action.focusThirdEditorGroup'], shortcut = "cmd+3" }
-s4 = { name = "Split: 4th", args = ['workbench.action.focusFourthEditorGroup'], shortcut = "cmd+4" }
-s5 = { name = "Split: 5th", args = ['workbench.action.focusFifthEditorGroup'], shortcut = "cmd+5" }
-s6 = { name = "Split: 6th", args = ['workbench.action.focusSixthEditorGroup'], shortcut = "cmd+6" }
-s7 = { name = "Split: 7th", args = [
+s1 = { name = "Split: 1st", 'js:vscode' = ['workbench.action.focusFirstEditorGroup'], shortcut = "cmd+1" }
+s2 = { name = "Split: 2nd", 'js:vscode' = ['workbench.action.focusSecondEditorGroup'], shortcut = "cmd+2" }
+s3 = { name = "Split: 3rd", 'js:vscode' = ['workbench.action.focusThirdEditorGroup'], shortcut = "cmd+3" }
+s4 = { name = "Split: 4th", 'js:vscode' = ['workbench.action.focusFourthEditorGroup'], shortcut = "cmd+4" }
+s5 = { name = "Split: 5th", 'js:vscode' = ['workbench.action.focusFifthEditorGroup'], shortcut = "cmd+5" }
+s6 = { name = "Split: 6th", 'js:vscode' = ['workbench.action.focusSixthEditorGroup'], shortcut = "cmd+6" }
+s7 = { name = "Split: 7th", 'js:vscode' = [
   'workbench.action.focusSeventhEditorGroup',
 ], shortcut = "cmd+7" }
-s8 = { name = "Split: 8th", args = ['workbench.action.focusEighthEditorGroup'], shortcut = "cmd+8" }
-sq = { name = "Split: Quit", args = ['workbench.action.closeGroup'], shortcut = "cmd+w" }
-sqe = { name = "Split: Quit Editors", args = [
+s8 = { name = "Split: 8th", 'js:vscode' = ['workbench.action.focusEighthEditorGroup'], shortcut = "cmd+8" }
+sq = { name = "Split: Quit", 'js:vscode' = ['workbench.action.closeGroup'], shortcut = "cmd+w" }
+sqe = { name = "Split: Quit Editors", 'js:vscode' = [
   'workbench.action.closeEditorsInGroup',
 ], shortcut = "cmd+k w" }
-sqa = { name = "Split: Quit All", args = [
+sqa = { name = "Split: Quit All", 'js:vscode' = [
   'workbench.action.closeAllGroups',
 ], shortcut = "cmd+k shift+cmd+w" }
 
 '?g' = { name = "Goto" }
-gb = { name = "Goto Bracket", args = [
+gb = { name = "Goto Bracket", 'js:vscode' = [
   'editor.action.jumpToBracket',
 ], shortcut = "shift+cmd+backslash" }
 gpx = { name = "Goto Problem: Next", shortcut = "f8" }
 gpv = { name = "Goto Problem: Previous", shortcut = "shift+f8" }
 gcx = { name = "Goto Change: Next", shortcut = "opt+f3" }
 gcv = { name = "Goto Change: Previous", shortcut = "shift+opt+f3" }
-gd = { name = "Goto Declaration", args = ['editor.action.goToDeclaration'] }
-gy = { name = "Goto Type Definition", args = ['editor.action.goToTypeDefinition'] }
-gi = { name = "Goto Implementation", args = [
+gd = { name = "Goto Declaration", 'js:vscode' = ['editor.action.goToDeclaration'] }
+gy = { name = "Goto Type Definition", 'js:vscode' = ['editor.action.goToTypeDefinition'] }
+gi = { name = "Goto Implementation", 'js:vscode' = [
   'editor.action.goToImplementation',
 ], shortcut = "cmd+f12" }
-gip = { name = "Goto Implementation Peek", args = [
+gip = { name = "Goto Implementation Peek", 'js:vscode' = [
   'editor.action.peekImplementation',
 ], shortcut = "shift+cmd+f12" }
-gl = { name = "Goto Line", args = ['workbench.action.gotoLine'], shortcut = "ctrl+g" }
-gr = { name = "Goto References", args = ['editor.action.goToReferences'], shortcut = "shift+f12" }
-grv = { name = "Goto Reference: Previous", args = [
+gl = { name = "Goto Line", 'js:vscode' = ['workbench.action.gotoLine'], shortcut = "ctrl+g" }
+gr = { name = "Goto References", 'js:vscode' = ['editor.action.goToReferences'], shortcut = "shift+f12" }
+grv = { name = "Goto Reference: Previous", 'js:vscode' = [
   'goToPreviousReference',
 ], shortcut = "shift+f12" }
-grx = { name = "Goto Reference: Next", args = ['goToNextReference'], shortcut = "f12" }
-gs = { name = "Goto Symbol", args = ['workbench.action.gotoSymbol'], shortcut = "shift+cmd+o" }
+grx = { name = "Goto Reference: Next", 'js:vscode' = ['goToNextReference'], shortcut = "f12" }
+gs = { name = "Goto Symbol", 'js:vscode' = ['workbench.action.gotoSymbol'], shortcut = "shift+cmd+o" }
 
 '?w' = { name = "Window" }
-woe = { name = "Window: Open Editor", args = [
+woe = { name = "Window: Open Editor", 'js:vscode' = [
   'workbench.action.copyEditorToNewWindow',
 ], shortcut = "cmd+k o" }
-wq = { name = "Window: Quit", args = ['workbench.action.closeWindow'], shortcut = "shift+cmd+w" }
-wqo = { name = "Window: Quit Others", args = ['workbench.action.closeOtherWindows'] }
-wn = { name = "Window: New", args = ['workbench.action.newWindow'], shortcut = "shift+cmd+n" }
-wr = { name = "Window: Reload", args = ['workbench.action.reloadWindow'], shortcut = "cmd+r" }
-ws = { name = "Window: Switch", args = ['workbench.action.switchWindow'], shortcut = "ctrl+w" }
-wt = { name = "Window: Terminal", args = [
+wq = { name = "Window: Quit", 'js:vscode' = ['workbench.action.closeWindow'], shortcut = "shift+cmd+w" }
+wqo = { name = "Window: Quit Others", 'js:vscode' = ['workbench.action.closeOtherWindows'] }
+wn = { name = "Window: New", 'js:vscode' = ['workbench.action.newWindow'], shortcut = "shift+cmd+n" }
+wr = { name = "Window: Reload", 'js:vscode' = ['workbench.action.reloadWindow'], shortcut = "cmd+r" }
+ws = { name = "Window: Switch", 'js:vscode' = ['workbench.action.switchWindow'], shortcut = "ctrl+w" }
+wt = { name = "Window: Terminal", 'js:vscode' = [
   'workbench.action.terminal.newInNewWindow`", shortcut = "ctrl+shift+alt+',
 ] }
 
 '?z' = { name = "Zoom / Zen" }
-zf = { name = "Zoom: Full Screen", args = [
+zf = { name = "Zoom: Full Screen", 'js:vscode' = [
   'workbench.action.toggleFullScreen',
 ], shortcut = "ctrl+cmd+f" }
-zi = { name = "Zoom In", args = ['workbench.action.zoomIn'], shortcut = "cmd+NumpadAdd" }
-zo = { name = "Zoom Out", args = ['workbench.action.zoomOut'], shortcut = "cmd+NumpadSubtract" }
-zr = { name = "Zoom Reset", args = ['workbench.action.zoomReset'], shortcut = "cmd+Numpad0" }
-zm = { name = "Zen Mode", args = ['workbench.action.toggleZenMode'], shortcut = "cmd+k z" }
-zq = { name = "Zen: Quit", args = [
+zi = { name = "Zoom In", 'js:vscode' = ['workbench.action.zoomIn'], shortcut = "cmd+NumpadAdd" }
+zo = { name = "Zoom Out", 'js:vscode' = ['workbench.action.zoomOut'], shortcut = "cmd+NumpadSubtract" }
+zr = { name = "Zoom Reset", 'js:vscode' = ['workbench.action.zoomReset'], shortcut = "cmd+Numpad0" }
+zm = { name = "Zen Mode", 'js:vscode' = ['workbench.action.toggleZenMode'], shortcut = "cmd+k z" }
+zq = { name = "Zen: Quit", 'js:vscode' = [
   'workbench.action.exitZenMode',
 ], shortcut = "escape escape" }
 
 '?d' = { name = "Debug" }
-da = { name = "Debug: All", args = ['testing.debugAll'], shortcut = "cmd+; cmd+a" }
-dc = { name = "Debug: Cursor", args = [
+da = { name = "Debug: All", 'js:vscode' = ['testing.debugAll'], shortcut = "cmd+; cmd+a" }
+dc = { name = "Debug: Cursor", 'js:vscode' = [
   'testing.debugAtCursor',
 ], shortcut = "cmd+; cmd+c" }
-df = { name = "Debug: File", args = [
+df = { name = "Debug: File", 'js:vscode' = [
   'testing.debugCurrentFile',
 ], shortcut = "cmd+; cmd+f" }
-dft = { name = "Debug: Failed Tests", args = [
+dft = { name = "Debug: Failed Tests", 'js:vscode' = [
   'testing.debugFailTests',
 ], shortcut = "cmd+; cmd+e" }
-dl = { name = "Debug: Last", args = ['testing.debugLastRun'], shortcut = "cmd+; cmd+l" }
-dd = { name = "Debug: Debug", args = ['Debug'] }
-ds = { name = "Debug: Start", args = ['workbench.action.debug.start'], shortcut = "f5" }
-db = { name = "Debug: Breakpoint", args = [
+dl = { name = "Debug: Last", 'js:vscode' = ['testing.debugLastRun'], shortcut = "cmd+; cmd+l" }
+dd = { name = "Debug: Debug", 'js:vscode' = ['Debug'] }
+ds = { name = "Debug: Start", 'js:vscode' = ['workbench.action.debug.start'], shortcut = "f5" }
+db = { name = "Debug: Breakpoint", 'js:vscode' = [
   'editor.debug.action.toggleBreakpoint',
 ], shortcut = "f9" }
-do = { name = "Debug: Stop", args = ['workbench.action.debug.stop'], shortcut = "shift+f5" }
-du = { name = "Debug: Pause", args = ['workbench.action.debug.pause'], shortcut = "f6" }
-dr = { name = "Debug: Run", args = ['workbench.action.debug.run'], shortcut = "ctrl+f5" }
-dv = { name = "Debug: View", args = ['debug.openView'], shortcut = "cmd+f5" }
-dcw = { name = "Debug: Copy Watch Expression", args = [
+do = { name = "Debug: Stop", 'js:vscode' = ['workbench.action.debug.stop'], shortcut = "shift+f5" }
+du = { name = "Debug: Pause", 'js:vscode' = ['workbench.action.debug.pause'], shortcut = "f6" }
+dr = { name = "Debug: Run", 'js:vscode' = ['workbench.action.debug.run'], shortcut = "ctrl+f5" }
+dv = { name = "Debug: View", 'js:vscode' = ['debug.openView'], shortcut = "cmd+f5" }
+dcw = { name = "Debug: Copy Watch Expression", 'js:vscode' = [
   'debug.copyWatchExpression',
 ], shortcut = "alt+cmd+c" }
-drs = { name = "Debug: Restart", args = [
+drs = { name = "Debug: Restart", 'js:vscode' = [
   'workbench.action.debug.restart',
 ], shortcut = "shift+cmd+f5" }
-dh = { name = "Debug: Hover", args = [
+dh = { name = "Debug: Hover", 'js:vscode' = [
   'editor.debug.action.showDebugHover',
 ], shortcut = "cmd+k cmd+i" }
-dit = { name = "Debug: Into Target", args = [
+dit = { name = "Debug: Into Target", 'js:vscode' = [
   'workbench.action.debug.stepIntoTarget',
 ], shortcut = "cmd+f11" }
 
 '?ds' = { name = "Debug: Step" }
-dsi = { name = "Debug: Step Into", args = ['workbench.action.debug.stepInto'], shortcut = "f11" }
-dso = { name = "Debug: Step Out", args = ['workbench.action.debug.stepOut'], shortcut = "shift+f11" }
-dsv = { name = "Debug: Step Over", args = ['workbench.action.debug.stepOver'], shortcut = "f10" }
+dsi = { name = "Debug: Step Into", 'js:vscode' = ['workbench.action.debug.stepInto'], shortcut = "f11" }
+dso = { name = "Debug: Step Out", 'js:vscode' = ['workbench.action.debug.stepOut'], shortcut = "shift+f11" }
+dsv = { name = "Debug: Step Over", 'js:vscode' = ['workbench.action.debug.stepOver'], shortcut = "f10" }
 
 '?dc' = { name = "Debug Console" }
-'dc]' = { name = "workbench.action.debug.nextConsole", args = [
+'dc]' = { name = "workbench.action.debug.nextConsole", 'js:vscode' = [
   'workbench.action.debug.nextConsole',
 ], shortcut = "shift+cmd+]" }
-'dc[' = { name = "workbench.action.debug.prevConsole", args = [
+'dc[' = { name = "workbench.action.debug.prevConsole", 'js:vscode' = [
   'workbench.action.debug.prevConsole',
 ], shortcut = "shift+cmd+[" }
 
 # Code
 '?c' = { name = "Code" }
-ci = { name = "Code: Imports", args = [
+ci = { name = "Code: Imports", 'js:vscode' = [
   'editor.action.organizeImports',
 ], shortcut = "shift+alt+o" }
-cd = { name = "Code: Definition", args = ['editor.action.revealDefinition'], shortcut = "f12" }
-'c[' = { name = "Code: Previous", args = [
+cd = { name = "Code: Definition", 'js:vscode' = ['editor.action.revealDefinition'], shortcut = "f12" }
+'c[' = { name = "Code: Previous", 'js:vscode' = [
   'editor.action.inlineSuggest.showPrevious',
 ], shortcut = "alt+[" }
-'c]' = { name = "Code: Next", args = ['editor.action.inlineSuggest.showNext'], shortcut = "alt+]" }
-cdp = { name = "Code: Definition Peek", args = [
+'c]' = { name = "Code: Next", 'js:vscode' = ['editor.action.inlineSuggest.showNext'], shortcut = "alt+]" }
+cdp = { name = "Code: Definition Peek", 'js:vscode' = [
   'editor.action.peekDefinition',
 ], shortcut = "alt+f12" }
-ch = { name = "Code: Hover", args = ['workbench.action.showHover'], shortcut = "cmd+k cmd+i" }
-cr = { name = "Code: Refactor", args = ['editor.action.refactor'], shortcut = "ctrl+shift+r" }
-crn = { name = "Code: Re Name", args = ['editor.action.rename'], shortcut = "f2" }
-cs = { name = "Code: Suggest", args = [
+ch = { name = "Code: Hover", 'js:vscode' = ['workbench.action.showHover'], shortcut = "cmd+k cmd+i" }
+cr = { name = "Code: Refactor", 'js:vscode' = ['editor.action.refactor'], shortcut = "ctrl+shift+r" }
+crn = { name = "Code: Re Name", 'js:vscode' = ['editor.action.rename'], shortcut = "f2" }
+cs = { name = "Code: Suggest", 'js:vscode' = [
   'workbench.action.terminal.triggerSuggest',
 ], shortcut = "ctrl+space" }
 '?cc' = { name = "Code Comment" }
-cc = { name = "Code: Comment", args = ['editor.action.commentLine'], shortcut = "cmd+/" }
-cca = { name = "Code: Comment Add", args = [
+cc = { name = "Code: Comment", 'js:vscode' = ['editor.action.commentLine'], shortcut = "cmd+/" }
+cca = { name = "Code: Comment Add", 'js:vscode' = [
   'workbench.action.addComment',
 ], shortcut = "cmd+k alt+cmd+c" }
-ccb = { name = "Code: Comment Block", args = [
+ccb = { name = "Code: Comment Block", 'js:vscode' = [
   'editor.action.blockComment',
 ], shortcut = "shift+alt+a" }
-ccl = { name = "Code: Comment Line", args = [
+ccl = { name = "Code: Comment Line", 'js:vscode' = [
   'editor.action.addCommentLine',
 ], shortcut = "cmd+k cmd+c" }
-ccr = { name = "Code Comment: Remove", args = [
+ccr = { name = "Code Comment: Remove", 'js:vscode' = [
   'editor.action.removeCommentLine',
 ], shortcut = "cmd+k cmd+u" }
-cch = { name = "Code Comment: Hide", args = ['workbench.action.hideComment'], shortcut = "shift+escape" }
+cch = { name = "Code Comment: Hide", 'js:vscode' = ['workbench.action.hideComment'], shortcut = "shift+escape" }
 
 '?n' = { name = "Notebook" }
 
 '?nb' = { name = "Notebook" }
-'nb[' = { name = "Notebook: Previous", args = [
+'nb[' = { name = "Notebook: Previous", 'js:vscode' = [
   'notebook.findPrevious.fromWidget',
 ], shortcut = "shift+f3" }
-'nb]' = { name = "Notebook: Next", args = [
+'nb]' = { name = "Notebook: Next", 'js:vscode' = [
   'notebook.findNext.fromWidget',
 ], shortcut = "f3" }
-nba = { name = "Notebook: Add", args = [
+nba = { name = "Notebook: Add", 'js:vscode' = [
   'notebook.addFindMatchToSelection',
 ], shortcut = "cmd+d" }
 
 '?nbl' = { name = "Notebook Language" }
-nbld = { name = "Notebook Language: Detect", args = [
+nbld = { name = "Notebook Language: Detect", 'js:vscode' = [
   'notebook.cell.detectLanguage',
 ], shortcut = "shift+alt+d" }
-nblc = { name = "Notebook Language: Change", args = [
+nblc = { name = "Notebook Language: Change", 'js:vscode' = [
   'notebook.cell.changeLanguage',
 ], shortcut = "cmd+k m" }
 
 '?nc' = { name = "Notebook Cell" }
-nci = { name = "Notebook Cell: Input Collapse", args = [
+nci = { name = "Notebook Cell: Input Collapse", 'js:vscode' = [
   'notebook.cell.collapseCellInput',
 ], shortcut = "cmd+k cmd+c" }
-'nc/' = { name = "Notebook Cell: Comment", args = [
+'nc/' = { name = "Notebook Cell: Comment", 'js:vscode' = [
   'notebook.cell.comment',
 ], shortcut = "cmd+/" }
-nco = { name = "Notebook Cell: Output Collapse", args = [
+nco = { name = "Notebook Cell: Output Collapse", 'js:vscode' = [
   'notebook.cell.collapseCellOutput',
 ], shortcut = "cmd+k t" }
-nca = { name = "Notebook Cell: AI", args = [
+nca = { name = "Notebook Cell: AI", 'js:vscode' = [
   'notebook.cell.chat.start',
 ], shortcut = "cmd+k i" }
-ncc = { name = "Notebook Cell: Center", args = [
+ncc = { name = "Notebook Cell: Center", 'js:vscode' = [
   'notebook.centerActiveCell',
 ], shortcut = "ctrl+l" }
-ncei = { name = "Notebook Cell: Expand Input", args = [
+ncei = { name = "Notebook Cell: Expand Input", 'js:vscode' = [
   'notebook.cell.expandCellInput',
 ], shortcut = "cmd+k cmd+c" }
-nceo = { name = "Notebook Cell: Expand Output", args = [
+nceo = { name = "Notebook Cell: Expand Output", 'js:vscode' = [
   'notebook.cell.expandCellOutput',
 ], shortcut = "cmd+k t" }
-ncf = { name = "Notebook Cell: Format", args = ['notebook.formatCell'], shortcut = "shift+alt+f" }
-ncfa = { name = "Notebook Cell: Failure Actions", args = [
+ncf = { name = "Notebook Cell: Format", 'js:vscode' = ['notebook.formatCell'], shortcut = "shift+alt+f" }
+ncfa = { name = "Notebook Cell: Failure Actions", 'js:vscode' = [
   'notebook.cell.openFailureActions',
 ], shortcut = "cmd+." }
-ncs = { name = "Notebook Cell: Split", args = [
+ncs = { name = "Notebook Cell: Split", 'js:vscode' = [
   'notebook.cell.split',
 ], shortcut = "cmd+k shift+cmd+backslash" }
-ncja = { name = "Notebook Cell: Join Above", args = [
+ncja = { name = "Notebook Cell: Join Above", 'js:vscode' = [
   'notebook.cell.joinAbove',
 ], shortcut = "ctrl+shift+alt+j" }
-ncjb = { name = "Notebook Cell: Join Below", args = [
+ncjb = { name = "Notebook Cell: Join Below", 'js:vscode' = [
   'notebook.cell.joinBelow',
 ], shortcut = "ctrl+alt+j" }
-ncp = { name = "Notebook Cell: Paste Above", args = [
+ncp = { name = "Notebook Cell: Paste Above", 'js:vscode' = [
   'notebook.cell.pasteAbove',
 ], shortcut = "shift+cmd+v" }
-nct = { name = "Notebook Cell: Toggle Output Scrolling", args = [
+nct = { name = "Notebook Cell: Toggle Output Scrolling", 'js:vscode' = [
   'notebook.cell.toggleOutputScrolling',
 ], shortcut = "cmd+k y" }
 
 # Marker
 '?m' = { name = "Marker" }
-'m]' = { name = "editor.action.marker.next", args = [
+'m]' = { name = "editor.action.marker.next", 'js:vscode' = [
   'editor.action.marker.next',
 ], shortcut = "alt+f8" }
-'m]f' = { name = "editor.action.marker.nextInFiles", args = [
+'m]f' = { name = "editor.action.marker.nextInFiles", 'js:vscode' = [
   'editor.action.marker.nextInFiles',
 ], shortcut = "f8" }
-'m[' = { name = "editor.action.marker.prev", args = [
+'m[' = { name = "editor.action.marker.prev", 'js:vscode' = [
   'editor.action.marker.prev',
 ], shortcut = "shift+alt+f8" }
-'m[f' = { name = "editor.action.marker.prevInFiles", args = [
+'m[f' = { name = "editor.action.marker.prevInFiles", 'js:vscode' = [
   'editor.action.marker.prevInFiles',
 ], shortcut = "shift+f8" }
 
 '?i' = { name = "Input (Chat)" }
-ia = { name = "Input: Accept All", args = ['chatEditor.action.acceptAllEdits'], shortcut = "alt+cmd+y" }
-iy = { name = "Input: Yes", args = ['chatEditor.action.accept'], shortcut = "shift+cmd+y" }
-ir = { name = "Input: Reject", args = ['chatEditor.action.reject'], shortcut = "shift+cmd+n" }
-in = { name = "Input: New", args = ['workbench.action.chat.newChat'], shortcut = "ctrl+l" }
-iad = { name = "Input: Accessible Diff", args = [
+ia = { name = "Input: Accept All", 'js:vscode' = ['chatEditor.action.acceptAllEdits'], shortcut = "alt+cmd+y" }
+iy = { name = "Input: Yes", 'js:vscode' = ['chatEditor.action.accept'], shortcut = "shift+cmd+y" }
+ir = { name = "Input: Reject", 'js:vscode' = ['chatEditor.action.reject'], shortcut = "shift+cmd+n" }
+in = { name = "Input: New", 'js:vscode' = ['workbench.action.chat.newChat'], shortcut = "ctrl+l" }
+iad = { name = "Input: Accessible Diff", 'js:vscode' = [
   'chatEditor.action.showAccessibleDiffView',
 ], shortcut = "f7" }
-id = { name = "Input: Diff", args = [
+id = { name = "Input: Diff", 'js:vscode' = [
   'chatEditor.action.toggleDiff',
 ], shortcut = "shift+alt+f7" }
-ii = { name = "Input: Inline", args = ['inlineChat.askInChat'], shortcut = "cmd+i" }
-is = { name = "Input: Start", args = ['inlineChat.start'], shortcut = "cmd+i" }
-io = { name = "Input: Open", args = ['workbench.action.chat.open'], shortcut = "ctrl+cmd+i" }
-ic = { name = "Input: Context", args = [
+ii = { name = "Input: Inline", 'js:vscode' = ['inlineChat.askInChat'], shortcut = "cmd+i" }
+is = { name = "Input: Start", 'js:vscode' = ['inlineChat.start'], shortcut = "cmd+i" }
+io = { name = "Input: Open", 'js:vscode' = ['workbench.action.chat.open'], shortcut = "ctrl+cmd+i" }
+ic = { name = "Input: Context", 'js:vscode' = [
   'workbench.action.chat.attachContext',
 ], shortcut = "cmd+/" }
-iq = { name = "Input: Quick", args = [
+iq = { name = "Input: Quick", 'js:vscode' = [
   'workbench.action.quickchat.toggle',
 ], shortcut = "shift+alt+cmd+l" }
-'i]' = { name = "Input: Next", args = [
+'i]' = { name = "Input: Next", 'js:vscode' = [
   'chatEditor.action.navigateNext',
 ], shortcut = "alt+f5" }
-'i[' = { name = "Input: Previous", args = [
+'i[' = { name = "Input: Previous", 'js:vscode' = [
   'chatEditor.action.navigatePrevious',
 ], shortcut = "shift+alt+f5" }
 
 '?h' = { name = "Hunk" }
-ha = { name = "Hunk: Accept", args = [
+ha = { name = "Hunk: Accept", 'js:vscode' = [
   'chatEditor.action.acceptHunk',
 ], shortcut = "cmd+y" }
-hu = { name = "Hunk: Undo", args = [
+hu = { name = "Hunk: Undo", 'js:vscode' = [
   'chatEditor.action.undoHunk',
 ], shortcut = "cmd+n" }
 
 '?ac' = { name = "Accessibility" }
-ach = { name = "Accessibility: Help", args = [
+ach = { name = "Accessibility: Help", 'js:vscode' = [
   'editor.action.accessibilityHelp',
 ], shortcut = "alt+f1" }
-ahca = { name = "Accessibility: Configure Assigned Keybindings", args = [
+ahca = { name = "Accessibility: Configure Assigned Keybindings", 'js:vscode' = [
   'editor.action.accessibilityHelpConfigureAssignedKeybindings',
 ], shortcut = "alt+a" }
-ahck = { name = "Accessibility: Configure Keybindings", args = [
+ahck = { name = "Accessibility: Configure Keybindings", 'js:vscode' = [
   'editor.action.accessibilityHelpConfigureKeybindings',
 ], shortcut = "alt+k" }
-aco = { name = "Accessibility: Open Help Link", args = [
+aco = { name = "Accessibility: Open Help Link", 'js:vscode' = [
   'editor.action.accessibilityHelpOpenHelpLink',
 ], shortcut = "alt+h" }
 '?av' = { name = "Accessibility View" }
-av = { name = "Accessibility View", args = [
+av = { name = "Accessibility View", 'js:vscode' = [
   'editor.action.accessibleView',
 ], shortcut = "alt+f2" }
-avg = { name = "Accessibility View: Goto Symbol", args = [
+avg = { name = "Accessibility View: Goto Symbol", 'js:vscode' = [
   'editor.action.accessibleViewGoToSymbol',
 ], shortcut = "shift+cmd+." }
-ava = { name = "Accessibility View: Accept Inline Completion", args = [
+ava = { name = "Accessibility View: Accept Inline Completion", 'js:vscode' = [
   'editor.action.accessibleViewAcceptInlineCompletion',
 ], shortcut = "ctrl+/" }
-avd = { name = "Accessibility View: Disable Hint", args = [
+avd = { name = "Accessibility View: Disable Hint", 'js:vscode' = [
   'editor.action.accessibleViewDisableHint',
 ], shortcut = "alt+f6" }
-'av]' = { name = "Accessibility View: Next", args = [
+'av]' = { name = "Accessibility View: Next", 'js:vscode' = [
   'editor.action.accessibleViewNext',
 ], shortcut = "alt+]" }
-'av[' = { name = "Accessibility View: Previous", args = [
+'av[' = { name = "Accessibility View: Previous", 'js:vscode' = [
   'editor.action.accessibleViewPrevious',
 ], shortcut = "alt+[" }
 
 '?b' = { name = "Breadcrumbs" }
-bf = { name = "Breadcrumbs: Focus", args = ['breadcrumbs.focus'], shortcut = "shift+cmd+;" }
-bs = { name = "Breadcrumbs: Select", args = [
+bf = { name = "Breadcrumbs: Focus", 'js:vscode' = ['breadcrumbs.focus'], shortcut = "shift+cmd+;" }
+bs = { name = "Breadcrumbs: Select", 'js:vscode' = [
   'breadcrumbs.focusAndSelect',
 ], shortcut = "shift+cmd+." }
-bo = { name = "Breadcrumbs: On", args = [
+bo = { name = "Breadcrumbs: On", 'js:vscode' = [
   'breadcrumbs.toggleToOn',
 ], shortcut = "shift+cmd+." }
 
 '?q' = { name = "QA (Testing)" }
-qh = { name = "QA: History", args = [
+qh = { name = "QA: History", 'js:vscode' = [
   'testing.toggleTestingPeekHistory',
 ], shortcut = "alt+h" }
-qs = { name = "QA: Show Recent Output", args = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
+qs = { name = "QA: Show Recent Output", 'js:vscode' = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
 '?qc' = { name = "QA Coverage" }
-qci = { name = "QA Coverage: Inline", args = [
+qci = { name = "QA Coverage: Inline", 'js:vscode' = [
   'testing.toggleInlineCoverage',
 ], shortcut = "cmd+; shift+cmd+i" }
-'qc]' = { name = "QA Coverage: Next Missed Line", args = [
+'qc]' = { name = "QA Coverage: Next Missed Line", 'js:vscode' = [
   'testing.coverage.goToNextMissedLine',
 ], shortcut = "alt+f9" }
-'qc[' = { name = "QA Coverage: Previous Missed Line", args = [
+'qc[' = { name = "QA Coverage: Previous Missed Line", 'js:vscode' = [
   'testing.coverage.goToPreviousMissedLine',
 ], shortcut = "shift+alt+f9" }
-qca = { name = "QA Coverage: Al", args = [
+qca = { name = "QA Coverage: Al", 'js:vscode' = [
   'testing.coverageAll',
 ], shortcut = "cmd+; shift+cmd+a" }
-qcc = { name = "QA Coverage: Cursor", args = [
+qcc = { name = "QA Coverage: Cursor", 'js:vscode' = [
   'testing.coverageAtCursor',
 ], shortcut = "cmd+; shift+cmd+c" }
-qcf = { name = "QA Coverage: File", args = [
+qcf = { name = "QA Coverage: File", 'js:vscode' = [
   'testing.coverageCurrentFile',
 ], shortcut = "cmd+; shift+cmd+f" }
-qcl = { name = "QA Coverage: Last Run", args = [
+qcl = { name = "QA Coverage: Last Run", 'js:vscode' = [
   'testing.coverageLastRun',
 ], shortcut = "cmd+; shift+cmd+l" }
 '?qr' = { name = "QA Run / Refresh" }
-qr = { name = "QA Refresh", args = ['testing.refreshTests'], shortcut = "cmd+; cmd+r" }
-qra = { name = "QA Run: All", args = ['testing.runAll'], shortcut = "cmd+; a" }
-qri = { name = "QA Run: Input Cursor", args = ['testing.runAtCursor'], shortcut = "cmd+; c" }
-qrc = { name = "QA Run: Cancel", args = ['testing.cancelRun'], shortcut = "cmd+; cmd+x" }
-qrf = { name = "QA Run File", args = ['testing.runCurrentFile'], shortcut = "cmd+; f" }
-qrr = { name = "QA: Re-Run", args = ['testing.reRunFailTests'], shortcut = "cmd+; e" }
-qrl = { name = "QA Run: Last Run", args = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
+qr = { name = "QA Refresh", 'js:vscode' = ['testing.refreshTests'], shortcut = "cmd+; cmd+r" }
+qra = { name = "QA Run: All", 'js:vscode' = ['testing.runAll'], shortcut = "cmd+; a" }
+qri = { name = "QA Run: Input Cursor", 'js:vscode' = ['testing.runAtCursor'], shortcut = "cmd+; c" }
+qrc = { name = "QA Run: Cancel", 'js:vscode' = ['testing.cancelRun'], shortcut = "cmd+; cmd+x" }
+qrf = { name = "QA Run File", 'js:vscode' = ['testing.runCurrentFile'], shortcut = "cmd+; f" }
+qrr = { name = "QA: Re-Run", 'js:vscode' = ['testing.reRunFailTests'], shortcut = "cmd+; e" }
+qrl = { name = "QA Run: Last Run", 'js:vscode' = ['testing.reRunLastRun'], shortcut = "cmd+; l" }
 '?qo' = { name = "QA Output" }
-qop = { name = "QA: Output Peek", args = [
+qop = { name = "QA: Output Peek", 'js:vscode' = [
   'testing.openOutputPeek',
 ], shortcut = "cmd+; cmd+m" }
-qor = { name = "QA: Output Recent", args = [
+qor = { name = "QA: Output Recent", 'js:vscode' = [
   'testing.showMostRecentOutput',
 ], shortcut = "cmd+; cmd+o" }
-qoi = { name = "QA: Output Inline", args = [
+qoi = { name = "QA: Output Inline", 'js:vscode' = [
   'testing.toggleInlineTestOutput',
 ], shortcut = "cmd+; cmd+i" }
 
-# acs = { name = "addCursorsAtSearchResults", args = ['addCursorsAtSearchResults'] }
-# acp = { name = "editor.action.announceCursorPosition", args = [
+# acs = { name = "addCursorsAtSearchResults", 'js:vscode' = ['addCursorsAtSearchResults'] }
+# acp = { name = "editor.action.announceCursorPosition", 'js:vscode' = [
 #   'editor.action.announceCursorPosition',
 # ], shortcut = "shift+alt+cmd+g" }
-# acr = { name = "addCursorsAtSearchResults", args = ['addCursorsAtSearchResults'] }
+# acr = { name = "addCursorsAtSearchResults", 'js:vscode' = ['addCursorsAtSearchResults'] }
 
-# as = { name = "editor.action.addSelectionToNextFindMatch", args = [
+# as = { name = "editor.action.addSelectionToNextFindMatch", 'js:vscode' = [
 #   'editor.action.addSelectionToNextFindMatch',
 # ], shortcut = "cmd+d" }
 
-# asc = { name = "acceptSelectedCodeAction", args = ['acceptSelectedCodeAction'] }
+# asc = { name = "acceptSelectedCodeAction", 'js:vscode' = ['acceptSelectedCodeAction'] }
 
 
-# # ca = { name = "Change All", args = ['editor.action.changeAll'], shortcut = "cmd+f2" }
+# # ca = { name = "Change All", 'js:vscode' = ['editor.action.changeAll'], shortcut = "cmd+f2" }
 
 
-# cdt = { name = "editor.changeDropType", args = ['editor.changeDropType'], shortcut = "cmd+." }
+# cdt = { name = "editor.changeDropType", 'js:vscode' = ['editor.changeDropType'], shortcut = "cmd+." }
 
-# cenc = { name = "workbench.action.compareEditor.nextChange", args = [
+# cenc = { name = "workbench.action.compareEditor.nextChange", 'js:vscode' = [
 #   'workbench.action.compareEditor.nextChange',
 # ], shortcut = "alt+f5" }
 
-# ceos = { name = "workbench.action.compareEditor.openSide", args = [
+# ceos = { name = "workbench.action.compareEditor.openSide", 'js:vscode' = [
 #   'workbench.action.compareEditor.openSide',
 # ], shortcut = "cmd+k shift+o" }
 
-# cepc = { name = "workbench.action.compareEditor.previousChange", args = [
+# cepc = { name = "workbench.action.compareEditor.previousChange", 'js:vscode' = [
 #   'workbench.action.compareEditor.previousChange',
 # ], shortcut = "shift+alt+f5" }
 
-# clm = { name = "workbench.action.editor.changeLanguageMode", args = [
+# clm = { name = "workbench.action.editor.changeLanguageMode", 'js:vscode' = [
 #   'workbench.action.editor.changeLanguageMode',
 # ], shortcut = "cmd+k m" }
 
 # cm = [
-#   { name = "Context Menu", args = [
+#   { name = "Context Menu", 'js:vscode' = [
 #     'editor.action.showContextMenu',
 #   ], shortcut = "shift+f10" },
-#   { name = "settings.action.showContextMenu", args = [
+#   { name = "settings.action.showContextMenu", 'js:vscode' = [
 #     'settings.action.showContextMenu',
 #   ], shortcut = "shift+f9" },
 # ]
 
-# com = { name = "workbench.action.chat.openModePicker", args = [
+# com = { name = "workbench.action.chat.openModePicker", 'js:vscode' = [
 #   'workbench.action.chat.openModePicker',
 # ], shortcut = "cmd+." }
 
 
-# cpt = { name = "editor.changePasteType", args = ['editor.changePasteType'], shortcut = "cmd+." }
+# cpt = { name = "editor.changePasteType", 'js:vscode' = ['editor.changePasteType'], shortcut = "cmd+." }
 
 
-# cwc = { name = "workbench.files.action.compareWithClipboard", args = [
+# cwc = { name = "workbench.files.action.compareWithClipboard", 'js:vscode' = [
 #   'workbench.files.action.compareWithClipboard',
 # ], shortcut = "cmd+k c" }
 
-# cws = { name = "workbench.files.action.compareWithSaved", args = [
+# cws = { name = "workbench.files.action.compareWithSaved", 'js:vscode' = [
 #   'workbench.files.action.compareWithSaved',
 # ], shortcut = "cmd+k d" }
 
-# ddn = { name = "editor.action.dirtydiff.next", args = [
+# ddn = { name = "editor.action.dirtydiff.next", 'js:vscode' = [
 #   'editor.action.dirtydiff.next',
 # ], shortcut = "alt+f3" }
 
-# ddp = { name = "editor.action.dirtydiff.previous", args = [
+# ddp = { name = "editor.action.dirtydiff.previous", 'js:vscode' = [
 #   'editor.action.dirtydiff.previous',
 # ], shortcut = "shift+alt+f3" }
 
-# dib = { name = "editor.debug.action.toggleInlineBreakpoint", args = [
+# dib = { name = "editor.debug.action.toggleInlineBreakpoint", 'js:vscode' = [
 #   'editor.debug.action.toggleInlineBreakpoint',
 # ], shortcut = "shift+f9" }
 
-# # dc = { name = "workbench.debug.panel.action.clearReplAction", args = ['workbench.debug.panel.action.clearReplAction'], shortcut = "cmd+k" }
+# # dc = { name = "workbench.debug.panel.action.clearReplAction", 'js:vscode' = ['workbench.debug.panel.action.clearReplAction'], shortcut = "cmd+k" }
 
-# dk = { name = "editor.action.defineKeybinding", args = [
+# dk = { name = "editor.action.defineKeybinding", 'js:vscode' = [
 #   'editor.action.defineKeybinding',
 # ], shortcut = "cmd+k cmd+k" }
 
-# dll = { name = "editor.action.deleteLines", args = [
+# dll = { name = "editor.action.deleteLines", 'js:vscode' = [
 #   'editor.action.deleteLines',
 # ], shortcut = "shift+cmd+k" }
 
-# dl = { name = "editor.detectLanguage", args = ['editor.detectLanguage'], shortcut = "shift+alt+d" }
+# dl = { name = "editor.detectLanguage", 'js:vscode' = ['editor.detectLanguage'], shortcut = "shift+alt+d" }
 
-# eds = { name = "workbench.action.editorDictation.start", args = [
+# eds = { name = "workbench.action.editorDictation.start", 'js:vscode' = [
 #   'workbench.action.editorDictation.start',
 # ], shortcut = "alt+cmd+v" }
 
-# els = { name = "Expand Line Selection", args = ['expandLineSelection'], shortcut = "cmd+l" }
+# els = { name = "Expand Line Selection", 'js:vscode' = ['expandLineSelection'], shortcut = "cmd+l" }
 
-# etf = { name = "editor.toggleFold", args = ['editor.toggleFold'], shortcut = "cmd+k cmd+l" }
+# etf = { name = "editor.toggleFold", 'js:vscode' = ['editor.toggleFold'], shortcut = "cmd+k cmd+l" }
 
-# fdn = { name = "Format Document None", args = [
+# fdn = { name = "Format Document None", 'js:vscode' = [
 #   'editor.action.formatDocument.none',
 # ], shortcut = "shift+alt+f" }
 
-# foev = { name = "workbench.files.action.focusOpenEditorsView", args = [
+# foev = { name = "workbench.files.action.focusOpenEditorsView", 'js:vscode' = [
 #   'workbench.files.action.focusOpenEditorsView',
 # ], shortcut = "cmd+k e" }
 
 # # fs = [
-# #   { name = "Format Selection", args = ['editor.action.formatSelection'], shortcut = "cmd+k cmd+f" },
+# #   { name = "Format Selection", 'js:vscode' = ['editor.action.formatSelection'], shortcut = "cmd+k cmd+f" },
 # # ]
 
-# fsb = { name = "Focus Side Bar", args = ['workbench.action.focusSideBar'], shortcut = "cmd+0" }
+# fsb = { name = "Focus Side Bar", 'js:vscode' = ['workbench.action.focusSideBar'], shortcut = "cmd+0" }
 
-# fsg = { name = "focusSuggestion", args = ['focusSuggestion'] }
+# fsg = { name = "focusSuggestion", 'js:vscode' = ['focusSuggestion'] }
 
-# fws = { name = "Find With Selection", args = ['actions.findWithSelection'], shortcut = "cmd+e" }
-
-
+# fws = { name = "Find With Selection", 'js:vscode' = ['actions.findWithSelection'], shortcut = "cmd+e" }
 
 
-# gns = { name = "editor.gotoNextSymbolFromResult", args = [
+
+
+# gns = { name = "editor.gotoNextSymbolFromResult", 'js:vscode' = [
 #   'editor.gotoNextSymbolFromResult',
 # ], shortcut = "f12" }
 
-# hr = { name = "workbench.action.browser.hardReload", args = [
+# hr = { name = "workbench.action.browser.hardReload", 'js:vscode' = [
 #   'workbench.action.browser.hardReload',
 # ], shortcut = "shift+cmd+r" }
 
-# ice = { name = "editor.action.insertCursorAtEndOfEachLineSelected", args = [
+# ice = { name = "editor.action.insertCursorAtEndOfEachLineSelected", 'js:vscode' = [
 #   'editor.action.insertCursorAtEndOfEachLineSelected',
 # ], shortcut = "shift+alt+i" }
 
-# ind = { name = "Indent", args = ['editor.action.indentLines'], shortcut = "cmd+]" }
+# ind = { name = "Indent", 'js:vscode' = ['editor.action.indentLines'], shortcut = "cmd+]" }
 
-# iprd = { name = "editor.action.inPlaceReplace.down", args = [
+# iprd = { name = "editor.action.inPlaceReplace.down", 'js:vscode' = [
 #   'editor.action.inPlaceReplace.down',
 # ], shortcut = "shift+cmd+." }
 
-# ipru = { name = "editor.action.inPlaceReplace.up", args = [
+# ipru = { name = "editor.action.inPlaceReplace.up", 'js:vscode' = [
 #   'editor.action.inPlaceReplace.up',
 # ], shortcut = "shift+cmd+," }
 
-# is = { name = "insertSnippet", args = ['insertSnippet'] }
+# is = { name = "insertSnippet", 'js:vscode' = ['insertSnippet'] }
 
-# jeig = { name = "workbench.action.joinEditorInGroup", args = [
+# jeig = { name = "workbench.action.joinEditorInGroup", 'js:vscode' = [
 #   'workbench.action.joinEditorInGroup',
 # ], shortcut = "cmd+k shift+cmd+backslash" }
 
-# jl = { name = "Join Lines", args = ['editor.action.joinLines'], shortcut = "ctrl+j" }
+# jl = { name = "Join Lines", 'js:vscode' = ['editor.action.joinLines'], shortcut = "ctrl+j" }
 
-# kba = { name = "keybindings.editor.addKeybinding", args = [
+# kba = { name = "keybindings.editor.addKeybinding", 'js:vscode' = [
 #   'keybindings.editor.addKeybinding',
 # ], shortcut = "cmd+k cmd+a" }
 
-# kbc = { name = "keybindings.editor.copyKeybindingEntry", args = [
+# kbc = { name = "keybindings.editor.copyKeybindingEntry", 'js:vscode' = [
 #   'keybindings.editor.copyKeybindingEntry',
 # ], shortcut = "cmd+c" }
 
-# kbd = { name = "keybindings.editor.defineWhenExpression", args = [
+# kbd = { name = "keybindings.editor.defineWhenExpression", 'js:vscode' = [
 #   'keybindings.editor.defineWhenExpression',
 # ], shortcut = "cmd+k cmd+e" }
 
-# kbr = { name = "keybindings.editor.removeKeybinding", args = [
+# kbr = { name = "keybindings.editor.removeKeybinding", 'js:vscode' = [
 #   'keybindings.editor.removeKeybinding',
 # ], shortcut = "cmd+backspace" }
 
-# kbrs = { name = "keybindings.editor.recordSearchKeys", args = [
+# kbrs = { name = "keybindings.editor.recordSearchKeys", 'js:vscode' = [
 #   'keybindings.editor.recordSearchKeys',
 # ], shortcut = "alt+cmd+k" }
 
-# kbs = { name = "keybindings.editor.searchKeybindings", args = [
+# kbs = { name = "keybindings.editor.searchKeybindings", 'js:vscode' = [
 #   'keybindings.editor.searchKeybindings',
 # ], shortcut = "cmd+f" }
 
-# kbt = { name = "keybindings.editor.toggleSortByPrecedence", args = [
+# kbt = { name = "keybindings.editor.toggleSortByPrecedence", 'js:vscode' = [
 #   'keybindings.editor.toggleSortByPrecedence',
 # ], shortcut = "alt+cmd+p" }
 
-# ke = { name = "Keep Editor", args = ['workbench.action.keepEditor'], shortcut = "cmd+k enter" }
+# ke = { name = "Keep Editor", 'js:vscode' = ['workbench.action.keepEditor'], shortcut = "cmd+k enter" }
 
-# kr = { name = "workbench.action.keybindingsReference", args = [
+# kr = { name = "workbench.action.keybindingsReference", 'js:vscode' = [
 #   'workbench.action.keybindingsReference',
 # ], shortcut = "cmd+k cmd+r" }
 
-# lbi = { name = "lineBreakInsert", args = ['lineBreakInsert'] }
+# lbi = { name = "lineBreakInsert", 'js:vscode' = ['lineBreakInsert'] }
 
-# le = { name = "editor.action.linkedEditing", args = [
+# le = { name = "editor.action.linkedEditing", 'js:vscode' = [
 #   'editor.action.linkedEditing',
 # ], shortcut = "shift+cmd+f2" }
 
-# leig = { name = "workbench.action.lastEditorInGroup", args = [
+# leig = { name = "workbench.action.lastEditorInGroup", 'js:vscode' = [
 #   'workbench.action.lastEditorInGroup',
 # ], shortcut = "cmd+9" }
 
-# # egf = { name = "workbench.action.moveActiveEditorToFirstGroup", args = [
+# # egf = { name = "workbench.action.moveActiveEditorToFirstGroup", 'js:vscode' = [
 # #   'workbench.action.moveActiveEditorToFirstGroup',
 # # ] }
 
 # mel = [
-#   { name = "workbench.action.moveActiveEditorLeftInGroup", args = [
+#   { name = "workbench.action.moveActiveEditorLeftInGroup", 'js:vscode' = [
 #     'workbench.action.moveActiveEditorLeftInGroup',
 #   ] },
-#   { name = "workbench.action.moveActiveEditorToLastGroup", args = [
+#   { name = "workbench.action.moveActiveEditorToLastGroup", 'js:vscode' = [
 #     'workbench.action.moveActiveEditorToLastGroup',
 #   ] },
 # ]
 
-# men = { name = "workbench.action.moveActiveEditorToNextGroup", args = [
+# men = { name = "workbench.action.moveActiveEditorToNextGroup", 'js:vscode' = [
 #   'workbench.action.moveActiveEditorToNextGroup',
 # ] }
 
-# mep = { name = "workbench.action.moveActiveEditorToPreviousGroup", args = [
+# mep = { name = "workbench.action.moveActiveEditorToPreviousGroup", 'js:vscode' = [
 #   'workbench.action.moveActiveEditorToPreviousGroup',
 # ] }
 
-# mer = { name = "workbench.action.moveActiveEditorRightInGroup", args = [
+# mer = { name = "workbench.action.moveActiveEditorRightInGroup", 'js:vscode' = [
 #   'workbench.action.moveActiveEditorRightInGroup',
 # ] }
 
 
-# ms = { name = "editor.action.moveSelectionToNextFindMatch", args = [
+# ms = { name = "editor.action.moveSelectionToNextFindMatch", 'js:vscode' = [
 #   'editor.action.moveSelectionToNextFindMatch',
 # ], shortcut = "cmd+k cmd+d" }
 
 
 # nc = [
-#   { name = "workbench.action.editor.nextChange", args = [
+#   { name = "workbench.action.editor.nextChange", 'js:vscode' = [
 #     'workbench.action.editor.nextChange',
 #   ], shortcut = "alt+f5" },
-#   { name = "multiDiffEditor.goToNextChange", args = [
+#   { name = "multiDiffEditor.goToNextChange", 'js:vscode' = [
 #     'multiDiffEditor.goToNextChange',
 #   ], shortcut = "alt+f5" },
 # ]
 
-# ncra = { name = "editor.action.nextCommentedRangeAction", args = [
+# ncra = { name = "editor.action.nextCommentedRangeAction", 'js:vscode' = [
 #   'editor.action.nextCommentedRangeAction',
 # ], shortcut = "alt+f10" }
 
-# ncta = { name = "editor.action.nextCommentThreadAction", args = [
+# ncta = { name = "editor.action.nextCommentThreadAction", 'js:vscode' = [
 #   'editor.action.nextCommentThreadAction',
 # ], shortcut = "alt+f9" }
 
 
 
-# nmfa = { name = "editor.action.nextMatchFindAction", args = [
+# nmfa = { name = "editor.action.nextMatchFindAction", 'js:vscode' = [
 #   'editor.action.nextMatchFindAction',
 # ], shortcut = "f3" }
 
-# nph = { name = "showNextParameterHint", args = ['showNextParameterHint'] }
+# nph = { name = "showNextParameterHint", 'js:vscode' = ['showNextParameterHint'] }
 
-# nsmfa = { name = "editor.action.nextSelectionMatchFindAction", args = [
+# nsmfa = { name = "editor.action.nextSelectionMatchFindAction", 'js:vscode' = [
 #   'editor.action.nextSelectionMatchFindAction',
 # ], shortcut = "cmd+f3" }
 
-# off = { name = "Open File Folder", args = [
+# off = { name = "Open File Folder", 'js:vscode' = [
 #   'workbench.action.files.openFileFolder',
 # ], shortcut = "cmd+o" }
 
-# ofvw = { name = "workbench.action.files.openFolderViaWorkspace", args = [
+# ofvw = { name = "workbench.action.files.openFolderViaWorkspace", 'js:vscode' = [
 #   'workbench.action.files.openFolderViaWorkspace',
 # ], shortcut = "cmd+o" }
 
 
-# olff = { name = "workbench.action.files.openLocalFileFolder", args = [
+# olff = { name = "workbench.action.files.openLocalFileFolder", 'js:vscode' = [
 #   'workbench.action.files.openLocalFileFolder',
 # ], shortcut = "cmd+o" }
 
-# otd = { name = "Outdent", args = ['editor.action.outdentLines'], shortcut = "cmd+[" }
+# otd = { name = "Outdent", 'js:vscode' = ['editor.action.outdentLines'], shortcut = "cmd+[" }
 
-# # pc = { name = "Previous Change", args = [
+# # pc = { name = "Previous Change", 'js:vscode' = [
 # #   'workbench.action.editor.previousChange',
 # # ], shortcut = "shift+alt+f5" }
 
-# # pcra = { name = "editor.action.previousCommentedRangeAction", args = [
+# # pcra = { name = "editor.action.previousCommentedRangeAction", 'js:vscode' = [
 # #   'editor.action.previousCommentedRangeAction',
 # # ], shortcut = "shift+alt+f10" }
 
-# # pcta = { name = "editor.action.previousCommentThreadAction", args = [
+# # pcta = { name = "editor.action.previousCommentThreadAction", 'js:vscode' = [
 # #   'editor.action.previousCommentThreadAction',
 # # ], shortcut = "shift+alt+f9" }
 
-# nm = { name = "testing.goToNextMessage", args = ['testing.goToNextMessage'], shortcut = "alt+f8" }
-# tpm = { name = "testing.goToPreviousMessage", args = [
+# nm = { name = "testing.goToNextMessage", 'js:vscode' = ['testing.goToNextMessage'], shortcut = "alt+f8" }
+# tpm = { name = "testing.goToPreviousMessage", 'js:vscode' = [
 #   'testing.goToPreviousMessage',
 # ], shortcut = "shift+alt+f8" }
 
-# pmfa = { name = "Previous Match Find Action", args = [
+# pmfa = { name = "Previous Match Find Action", 'js:vscode' = [
 #   'editor.action.previousMatchFindAction',
 # ], shortcut = "shift+f3" }
 
-# pph = { name = "showPrevParameterHint", args = ['showPrevParameterHint'] }
+# pph = { name = "showPrevParameterHint", 'js:vscode' = ['showPrevParameterHint'] }
 
-# psmfa = { name = "editor.action.previousSelectionMatchFindAction", args = [
+# psmfa = { name = "editor.action.previousSelectionMatchFindAction", 'js:vscode' = [
 #   'editor.action.previousSelectionMatchFindAction',
 # ], shortcut = "shift+cmd+f3" }
 
-# qi = { name = "workbench.action.quickInputBack", args = [
+# qi = { name = "workbench.action.quickInputBack", 'js:vscode' = [
 #   'workbench.action.quickInputBack',
 # ], shortcut = "ctrl+-" }
 
-# qih = { name = "quickInput.hide", args = ['quickInput.hide'], shortcut = "ctrl+alt+cmd+escape" }
+# qih = { name = "quickInput.hide", 'js:vscode' = ['quickInput.hide'], shortcut = "ctrl+alt+cmd+escape" }
 
-# qith = { name = "quickInput.toggleHover", args = [
+# qith = { name = "quickInput.toggleHover", 'js:vscode' = [
 #   'quickInput.toggleHover',
 # ], shortcut = "ctrl+space" }
 
-# qonr = { name = "workbench.action.quickOpenNavigateNextInRecentFilesPicker", args = [
+# qonr = { name = "workbench.action.quickOpenNavigateNextInRecentFilesPicker", 'js:vscode' = [
 #   'workbench.action.quickOpenNavigateNextInRecentFilesPicker',
 # ], shortcut = "ctrl+r" }
 
-# qopr = { name = "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker", args = [
+# qopr = { name = "workbench.action.quickOpenNavigatePreviousInRecentFilesPicker", 'js:vscode' = [
 #   'workbench.action.quickOpenNavigatePreviousInRecentFilesPicker',
 # ], shortcut = "ctrl+shift+r" }
 
-# qosn = { name = "workbench.action.quickOpenSelectNext", args = [
+# qosn = { name = "workbench.action.quickOpenSelectNext", 'js:vscode' = [
 #   'workbench.action.quickOpenSelectNext',
 # ], shortcut = "ctrl+n" }
 
-# qosp = { name = "workbench.action.quickOpenSelectPrevious", args = [
+# qosp = { name = "workbench.action.quickOpenSelectPrevious", 'js:vscode' = [
 #   'workbench.action.quickOpenSelectPrevious',
 # ], shortcut = "ctrl+p" }
 
-# raff = { name = "search.action.replaceAllInFolder", args = [
+# raff = { name = "search.action.replaceAllInFolder", 'js:vscode' = [
 #   'search.action.replaceAllInFolder',
 # ], shortcut = "shift+cmd+enter" }
 
-# rb = { name = "Remove Brackets", args = [
+# rb = { name = "Remove Brackets", 'js:vscode' = [
 #   'editor.action.removeBrackets',
 # ], shortcut = "alt+cmd+backspace" }
 
-# rda = { name = "Reveal Definition Aside", args = [
+# rda = { name = "Reveal Definition Aside", 'js:vscode' = [
 #   'editor.action.revealDefinitionAside',
 # ], shortcut = "cmd+k f12" }
 
 
-# rl = { name = "Reload", args = ['workbench.action.browser.reload'], shortcut = "cmd+r" }
+# rl = { name = "Reload", 'js:vscode' = ['workbench.action.browser.reload'], shortcut = "cmd+r" }
 
-# ro = { name = "Replace One", args = ['editor.action.replaceOne'], shortcut = "shift+cmd+1" }
+# ro = { name = "Replace One", 'js:vscode' = ['editor.action.replaceOne'], shortcut = "shift+cmd+1" }
 
-# rp = { name = "search.action.replace", args = ['search.action.replace'], shortcut = "shift+cmd+1" }
+# rp = { name = "search.action.replace", 'js:vscode' = ['search.action.replace'], shortcut = "shift+cmd+1" }
 
-# rs = { name = "rerunSearchEditorSearch", args = ['rerunSearchEditorSearch'] }
+# rs = { name = "rerunSearchEditorSearch", 'js:vscode' = ['rerunSearchEditorSearch'] }
 
-# rpfl = { name = "repl.action.filter", args = ['repl.action.filter'], shortcut = "cmd+f" }
+# rpfl = { name = "repl.action.filter", 'js:vscode' = ['repl.action.filter'], shortcut = "cmd+f" }
 
-# rpfn = { name = "repl.action.find", args = ['repl.action.find'], shortcut = "alt+cmd+f" }
+# rpfn = { name = "repl.action.find", 'js:vscode' = ['repl.action.find'], shortcut = "alt+cmd+f" }
 
-# rsf = { name = "search.action.restrictSearchToFolder", args = [
+# rsf = { name = "search.action.restrictSearchToFolder", 'js:vscode' = [
 #   'search.action.restrictSearchToFolder',
 # ], shortcut = "shift+alt+f" }
 
-# sac = { name = "editor.action.selectFromAnchorToCursor", args = [
+# sac = { name = "editor.action.selectFromAnchorToCursor", 'js:vscode' = [
 #   'editor.action.selectFromAnchorToCursor',
 # ], shortcut = "cmd+k cmd+k" }
 
-# sal = { name = "Save All", args = ['saveAll'], shortcut = "alt+cmd+s" }
+# sal = { name = "Save All", 'js:vscode' = ['saveAll'], shortcut = "alt+cmd+s" }
 
 # sas = [
-#   { name = "Save As", args = [
+#   { name = "Save As", 'js:vscode' = [
 #     'workbench.action.files.saveAs',
 #   ], shortcut = "shift+cmd+s" },
-#   { name = "Show All Symbols", args = [
+#   { name = "Show All Symbols", 'js:vscode' = [
 #     'workbench.action.showAllSymbols',
 #   ], shortcut = "cmd+t" },
 # ]
 
-# shl = { name = "editor.action.selectHighlights", args = [
+# shl = { name = "editor.action.selectHighlights", 'js:vscode' = [
 #   'editor.action.selectHighlights',
 # ], shortcut = "shift+cmd+l" }
 
-# sld = { name = "Scroll Line Down", args = ['scrollLineDown'], shortcut = "ctrl+pagedown" }
+# sld = { name = "Scroll Line Down", 'js:vscode' = ['scrollLineDown'], shortcut = "ctrl+pagedown" }
 
-# slf = { name = "workbench.action.files.saveLocalFile", args = [
+# slf = { name = "workbench.action.files.saveLocalFile", 'js:vscode' = [
 #   'workbench.action.files.saveLocalFile',
 # ], shortcut = "shift+cmd+s" }
 
-# slu = { name = "Scroll Line Up", args = ['scrollLineUp'], shortcut = "ctrl+pageup" }
+# slu = { name = "Scroll Line Up", 'js:vscode' = ['scrollLineUp'], shortcut = "ctrl+pageup" }
 
-# sns = { name = "selectNextSuggestion", args = ['selectNextSuggestion'] }
+# sns = { name = "selectNextSuggestion", 'js:vscode' = ['selectNextSuggestion'] }
 
 
-# spd = { name = "Scroll Page Down", args = ['scrollPageDown'], shortcut = "cmd+pagedown" }
+# spd = { name = "Scroll Page Down", 'js:vscode' = ['scrollPageDown'], shortcut = "cmd+pagedown" }
 
-# sps = { name = "selectPrevSuggestion", args = ['selectPrevSuggestion'] }
+# sps = { name = "selectPrevSuggestion", 'js:vscode' = ['selectPrevSuggestion'] }
 
-# spu = { name = "Scroll Page Up", args = ['scrollPageUp'], shortcut = "cmd+pageup" }
+# spu = { name = "Scroll Page Up", 'js:vscode' = ['scrollPageUp'], shortcut = "cmd+pageup" }
 
-# ssa = { name = "editor.action.setSelectionAnchor", args = [
+# ssa = { name = "editor.action.setSelectionAnchor", 'js:vscode' = [
 #   'editor.action.setSelectionAnchor',
 # ], shortcut = "cmd+k cmd+b" }
 
-# sse = { name = "Smart Select Expand", args = [
+# sse = { name = "Smart Select Expand", 'js:vscode' = [
 #   'editor.action.smartSelect.expand',
 # ], shortcut = "ctrl+shift+right" }
 
-# sss = { name = "Smart Select Contract", args = [
+# sss = { name = "Smart Select Contract", 'js:vscode' = [
 #   'editor.action.smartSelect.shrink',
 # ], shortcut = "ctrl+shift+left" }
 
-# st = { name = "Select Theme", args = ['workbench.action.selectTheme'], shortcut = "cmd+k cmd+t" }
+# st = { name = "Select Theme", 'js:vscode' = ['workbench.action.selectTheme'], shortcut = "cmd+k cmd+t" }
 
-# stb = { name = "Scroll to Bottom", args = ['Scroll to Bottom'] }
+# stb = { name = "Scroll to Bottom", 'js:vscode' = ['Scroll to Bottom'] }
 
-# stcw = { name = "workbench.action.terminal.sizeToContentWidth", args = [
+# stcw = { name = "workbench.action.terminal.sizeToContentWidth", 'js:vscode' = [
 #   'workbench.action.terminal.sizeToContentWidth',
 # ], shortcut = "alt+z" }
 
-# stt = { name = "Scroll to Top", args = ['Scroll to Top'] }
+# stt = { name = "Scroll to Top", 'js:vscode' = ['Scroll to Top'] }
 
-# svwf = { name = "Save Without Formatting", args = [
+# svwf = { name = "Save Without Formatting", 'js:vscode' = [
 #   'workbench.action.files.saveWithoutFormatting',
 # ], shortcut = "cmd+k s" }
 
-# # sw = { name = "Search Workspace", args = ['workbench.action.searchWorkspace'] }
+# # sw = { name = "Search Workspace", 'js:vscode' = ['workbench.action.searchWorkspace'] }
 
-# swa = { name = "search.action.searchWithAI", args = [
+# swa = { name = "search.action.searchWithAI", 'js:vscode' = [
 #   'search.action.searchWithAI',
 # ], shortcut = "cmd+i" }
 
-# swc = { name = "suggestWidgetCopy", args = ['suggestWidgetCopy'] }
+# swc = { name = "suggestWidgetCopy", 'js:vscode' = ['suggestWidgetCopy'] }
 
 
-# tab = { name = "workbench.action.toggleAuxiliaryBar", args = [
+# tab = { name = "workbench.action.toggleAuxiliaryBar", 'js:vscode' = [
 #   'workbench.action.toggleAuxiliaryBar',
 # ], shortcut = "alt+cmd+b" }
 
-# tas = { name = "settings.action.toggleAiSearch", args = [
+# tas = { name = "settings.action.toggleAiSearch", 'js:vscode' = [
 #   'settings.action.toggleAiSearch',
 # ], shortcut = "cmd+i" }
 
-# tbi = { name = "mergeEditor.toggleBetweenInputs", args = [
+# tbi = { name = "mergeEditor.toggleBetweenInputs", 'js:vscode' = [
 #   'mergeEditor.toggleBetweenInputs',
 # ], shortcut = "shift+cmd+t" }
 
-# tdt = { name = "workbench.action.toggleDevTools", args = [
+# tdt = { name = "workbench.action.toggleDevTools", 'js:vscode' = [
 #   'workbench.action.toggleDevTools',
 # ], shortcut = "alt+cmd+i" }
 
-# teg = { name = "workbench.action.toggleEditorGroupLayout", args = [
+# teg = { name = "workbench.action.toggleEditorGroupLayout", 'js:vscode' = [
 #   'workbench.action.toggleEditorGroupLayout',
 # ], shortcut = "alt+cmd+0" }
 
 # tem = [
-#   { name = "toggleExplainMode", args = [
+#   { name = "toggleExplainMode", 'js:vscode' = [
 #     'toggleExplainMode',
 #   ] },
-#   { name = "terminalSuggestToggleExplainMode", args = [
+#   { name = "terminalSuggestToggleExplainMode", 'js:vscode' = [
 #     'terminalSuggestToggleExplainMode',
 #   ] },
 # ]
 
 # tfcs = [
-#   { name = "Toggle Find Case Sensitive", args = [
+#   { name = "Toggle Find Case Sensitive", 'js:vscode' = [
 #     'toggleFindCaseSensitive',
 #   ], shortcut = "alt+cmd+c" },
-#   { name = "workbench.action.terminal.toggleFindCaseSensitive", args = [
+#   { name = "workbench.action.terminal.toggleFindCaseSensitive", 'js:vscode' = [
 #     'workbench.action.terminal.toggleFindCaseSensitive',
 #   ], shortcut = "alt+cmd+c" },
 # ]
 
-# tfis = { name = "Toggle Find In Selection", args = [
+# tfis = { name = "Toggle Find In Selection", 'js:vscode' = [
 #   'toggleFindInSelection',
 # ], shortcut = "alt+cmd+l" }
 
 # tfr = [
-#   { name = "Toggle Find Regex", args = [
+#   { name = "Toggle Find Regex", 'js:vscode' = [
 #     'toggleFindRegex',
 #   ], shortcut = "alt+cmd+r" },
-#   { name = "workbench.action.terminal.toggleFindRegex", args = [
+#   { name = "workbench.action.terminal.toggleFindRegex", 'js:vscode' = [
 #     'workbench.action.terminal.toggleFindRegex',
 #   ], shortcut = "alt+cmd+r" },
 # ]
 
 # tfww = [
-#   { name = "Toggle Find Whole Word", args = [
+#   { name = "Toggle Find Whole Word", 'js:vscode' = [
 #     'toggleFindWholeWord',
 #   ], shortcut = "alt+cmd+w" },
-#   { name = "workbench.action.terminal.toggleFindWholeWord", args = [
+#   { name = "workbench.action.terminal.toggleFindWholeWord", 'js:vscode' = [
 #     'workbench.action.terminal.toggleFindWholeWord',
 #   ], shortcut = "alt+cmd+w" },
 # ]
 
-# tl = { name = "Transpose Letters", args = ['editor.action.transposeLetters'], shortcut = "ctrl+t" }
+# tl = { name = "Transpose Letters", 'js:vscode' = ['editor.action.transposeLetters'], shortcut = "ctrl+t" }
 
-# tme = { name = "workbench.action.toggleMaximizeEditorGroup", args = [
+# tme = { name = "workbench.action.toggleMaximizeEditorGroup", 'js:vscode' = [
 #   'workbench.action.toggleMaximizeEditorGroup',
 # ], shortcut = "cmd+k cmd+m" }
 
 
-# to = { name = "Toggle Output", args = [
+# to = { name = "Toggle Output", 'js:vscode' = [
 #   'workbench.action.output.toggleOutput',
 # ], shortcut = "shift+cmd+u" }
 
-# tpc = { name = "Toggle Preserve Case", args = ['togglePreserveCase'], shortcut = "alt+cmd+p" }
+# tpc = { name = "Toggle Preserve Case", 'js:vscode' = ['togglePreserveCase'], shortcut = "alt+cmd+p" }
 
-# tpf = { name = "togglePeekWidgetFocus", args = ['togglePeekWidgetFocus'] }
+# tpf = { name = "togglePeekWidgetFocus", 'js:vscode' = ['togglePeekWidgetFocus'] }
 
-# tph = { name = "Trigger Parameter Hints", args = [
+# tph = { name = "Trigger Parameter Hints", 'js:vscode' = [
 #   'editor.action.triggerParameterHints',
 # ], shortcut = "shift+cmd+space" }
 
 # tqd = [
-#   { name = "toggleQuickDiffWidgetFocus", args = [
+#   { name = "toggleQuickDiffWidgetFocus", 'js:vscode' = [
 #     'toggleQuickDiffWidgetFocus',
 #   ] },
-#   { name = "toggleQuickDiffWidgetFocus", args = [
+#   { name = "toggleQuickDiffWidgetFocus", 'js:vscode' = [
 #     'toggleQuickDiffWidgetFocus',
 #   ] },
 # ]
 
 
 
-# tsg = { name = "editor.action.triggerSuggest", args = [
+# tsg = { name = "editor.action.triggerSuggest", 'js:vscode' = [
 #   'editor.action.triggerSuggest',
 # ], shortcut = "cmd+i" }
 
-# tsgd = { name = "toggleSuggestionDetails", args = ['toggleSuggestionDetails'] }
+# tsgd = { name = "toggleSuggestionDetails", 'js:vscode' = ['toggleSuggestionDetails'] }
 
-# tsgf = { name = "toggleSuggestionFocus", args = ['toggleSuggestionFocus'] }
+# tsgf = { name = "toggleSuggestionFocus", 'js:vscode' = ['toggleSuggestionFocus'] }
 
-# tsh = { name = "Toggle Suggest Details", args = ['toggleSuggestionDetails'], shortcut = "cmd+i" }
+# tsh = { name = "Toggle Suggest Details", 'js:vscode' = ['toggleSuggestionDetails'], shortcut = "cmd+i" }
 
 
-# tsr = { name = "editor.action.toggleScreenReaderAccessibilityMode", args = [
+# tsr = { name = "editor.action.toggleScreenReaderAccessibilityMode", 'js:vscode' = [
 #   'editor.action.toggleScreenReaderAccessibilityMode',
 # ], shortcut = "cmd+e" }
 
-# tsw = { name = "workbench.action.terminal.searchWorkspace", args = [
+# tsw = { name = "workbench.action.terminal.searchWorkspace", 'js:vscode' = [
 #   'workbench.action.terminal.searchWorkspace',
 # ], shortcut = "shift+cmd+f" }
 
-# ttf = { name = "editor.action.toggleTabFocusMode", args = [
+# ttf = { name = "editor.action.toggleTabFocusMode", 'js:vscode' = [
 #   'editor.action.toggleTabFocusMode',
 # ], shortcut = "ctrl+shift+m" }
 
-# ttw = { name = "editor.action.trimTrailingWhitespace", args = [
+# ttw = { name = "editor.action.trimTrailingWhitespace", 'js:vscode' = [
 #   'editor.action.trimTrailingWhitespace',
 # ], shortcut = "cmd+k cmd+x" }
 
-# tww = { name = "Toggle Word Wrap", args = ['editor.action.toggleWordWrap'], shortcut = "alt+z" }
+# tww = { name = "Toggle Word Wrap", 'js:vscode' = ['editor.action.toggleWordWrap'], shortcut = "alt+z" }
 
 
-# whn = { name = "editor.action.wordHighlight.next", args = [
+# whn = { name = "editor.action.wordHighlight.next", 'js:vscode' = [
 #   'editor.action.wordHighlight.next',
 # ], shortcut = "f7" }
 
-# whp = { name = "editor.action.wordHighlight.prev", args = [
+# whp = { name = "editor.action.wordHighlight.prev", 'js:vscode' = [
 #   'editor.action.wordHighlight.prev',
 # ], shortcut = "shift+f7" }
 
 
-# std = { name = "workbench.action.terminal.suggestToggleDetails", args = [
+# std = { name = "workbench.action.terminal.suggestToggleDetails", 'js:vscode' = [
 #   'workbench.action.terminal.suggestToggleDetails',
 # ], shortcut = "cmd+i" }
 
-# stf = { name = "workbench.action.terminal.suggestToggleDetailsFocus", args = [
+# stf = { name = "workbench.action.terminal.suggestToggleDetailsFocus", 'js:vscode' = [
 #   'workbench.action.terminal.suggestToggleDetailsFocus',
 # ], shortcut = "ctrl+alt+space" }
-# apa = { name = "notification.acceptPrimaryAction", args = [
+# apa = { name = "notification.acceptPrimaryAction", 'js:vscode' = [
 #   'notification.acceptPrimaryAction',
 # ], shortcut = "shift+cmd+a" }

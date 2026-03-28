@@ -1,4 +1,8 @@
 # https://forum.cursor.com/t/cursor-bundle-identifier/779
-[config]
 name = "Cursor"
-extends = "@keychord/chords-vscode/chords/com/microsoft/VSCode/macos.toml"
+
+[chords.'(.*)']
+file = [
+  "@keychord/chords-vscode/chords/com/microsoft/VSCode/macos.toml",
+  { meta = { appPath = "/Applications/Cursor.app" } }
+]
