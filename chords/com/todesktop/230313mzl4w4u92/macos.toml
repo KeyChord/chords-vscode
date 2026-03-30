@@ -1,8 +1,9 @@
 # https://forum.cursor.com/t/cursor-bundle-identifier/779
 name = "Cursor"
 
-[chords.'(.*)']
-file = [
-  "@keychord/chords-vscode/chords/com/microsoft/VSCode/macos.toml",
-  { meta = { appPath = "/Applications/Cursor.app" } }
-]
+[handlers.command]
+file = "vscode.js"
+args = ["/Applications/Cursor.app"]
+
+[[import]]
+file = "com/microsoft/VSCode/macos.toml"
