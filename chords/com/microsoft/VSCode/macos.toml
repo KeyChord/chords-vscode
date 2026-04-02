@@ -33,8 +33,8 @@ frg = { name = "Find Replace Globally", 'emit:command' = [
 ], shortcut = "shift+cmd+h" }
 
 # File
-fp = { name = "File: Path", 'emit:command' = ['copyFilePath'], shortcut = "alt+cmd+c" }
-# fp = { name = "File: Path", 'emit:command' = ['workbench.action.files.copyPathOfActiveFile'], shortcut = "cmd+k p" }
+fpa = { name = "File Path: Absolute (copy to clipboard)", 'emit:command' = ['copyFilePath'] }
+fpr = { name = "File: Path: Relative (copy to clipboard)", 'emit:command' = ['workbench.action.files.copyPathOfActiveFile'] }
 frp = { name = "File: Relative Path", 'emit:command' = [
   'copyRelativeFilePath',
 ], shortcut = "shift+alt+cmd+c" }
