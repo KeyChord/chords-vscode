@@ -1,6 +1,6 @@
 name = "VSCode"
 
-[handlers.command]
+[on.command]
 file = 'vscode.js'
 args = ["/Applications/Visual Studio Code.app"]
 
