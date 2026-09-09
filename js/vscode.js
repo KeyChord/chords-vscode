@@ -320,21 +320,23 @@ function spawn$1(file, second, third, previous) {
 }
 //#endregion
 //#region src/js/vscode.ts
-const uid = await spawn$1("id", ["-u"]);
-function vscode(cmd) {
-	const tmp = process.env.TMPDIR ?? "/tmp";
-	const dir = path.join(tmp, `vscode-command-server-${uid.stdout}`);
-	if (!exists(dir)) return false;
-	const requestPath = path.join(dir, "request.json");
-	const responsePath = path.join(dir, "response.json");
-	const payload = JSON.stringify({
-		commandId: cmd,
-		args: []
-	});
-	fs.writeFileSync(requestPath, payload);
-	fs.rmSync(responsePath, { force: true });
-	tap("cmd+shift+f17");
-	return true;
+async function buildAction() {
+	const uid = await spawn$1("id", ["-u"]);
+	return function action(cmd) {
+		const tmp = process.env.TMPDIR ?? "/tmp";
+		const dir = path.join(tmp, `vscode-command-server-${uid.stdout}`);
+		if (!exists(dir)) return false;
+		const requestPath = path.join(dir, "request.json");
+		const responsePath = path.join(dir, "response.json");
+		const payload = JSON.stringify({
+			commandId: cmd,
+			args: []
+		});
+		fs.writeFileSync(requestPath, payload);
+		fs.rmSync(responsePath, { force: true });
+		tap("cmd+shift+f17");
+		return true;
+	};
 }
 //#endregion
-export { vscode as default };
+export { buildAction as default };
