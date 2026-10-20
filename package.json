@@ -1,0 +1,23 @@
+{
+  "name": "@keychord/chords-vscode",
+  "displayName": "VSCode Chords",
+  "version": "0.0.0",
+  "description": "Chords for VSCode and its forks, including Cursor.",
+  "categories": [
+    "Editors"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KeyChord/chords-vscode"
+  },
+  "type": "module",
+  "dependencies": {
+    "nano-spawn-compat": "latest"
+  },
+  "devDependencies": {
+    "@keychord/chordtest": "workspace:*",
+    "@keychord/config": "catalog:",
+    "@keychord/tsconfig": "catalog:"
+  },
+  "packageManager": "pnpm@12.11.2"
+}
